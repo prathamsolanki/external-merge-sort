@@ -11,7 +11,10 @@ int main()
 	const char *filename = "data/file.txt";
 
 	OneElementAtTime obj;
+
 	obj.readOneElementAtTime(filename);
+
+	obj.writeOneElementAtTime(filename);
 
 	return 0;
 }
