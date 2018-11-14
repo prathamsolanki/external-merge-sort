@@ -6,9 +6,8 @@ using namespace std;
 
 class OneElementAtTime {
 	public:
-		char c;
-
 		void readOneElementAtTime(const char *filename) {
+			char c;
 			int file = open(filename, O_RDONLY);
 
 			if (file < 0) {
