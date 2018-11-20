@@ -4,43 +4,58 @@
 
 using namespace std;
 
-class CppStdFileIO {	
-	public:
-		void readFile(const char * filename) {
-			FILE *pFile = fopen(filename, "r");
+class CppStdFileIO {
+    private:
+        const char *filename;
+        FILE *pFile;
 
-			if (pFile == NULL) {
-				cout << "can't open file" << endl;
-			}
-			else {
-				fseek (pFile , 0 , SEEK_END);
-				long lSize = ftell (pFile);
-				rewind (pFile);
+    public:
+        CppStdFileIO(const char *f) {
+            filename = f;
+        }
 
-				char * buffer = (char*) malloc (sizeof(char)*lSize);
-				if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
+        void open_file(void) {
+            pFile = fopen(filename, "r");
 
-				size_t result = fread (buffer,1,lSize,pFile);
-				if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
+            if (pFile == NULL) {
+                cout << "can't open file" << endl;
+            }
+        }
 
-				fclose (pFile);
+        void read_file(void) {
+            fseek (pFile , 0 , SEEK_END);
+            long lSize = ftell (pFile);
+            rewind (pFile);
 
-				for (int i = 0; i < result; i++) {
-					cout << buffer[i] << endl;
-				}
+            char * buffer = (char*) malloc (sizeof(char)*lSize);
+            if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
 
-				free (buffer);
-			}
-		}
+            size_t result = fread (buffer,1,lSize,pFile);
+            if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
 
-		void writeFile(const char * filename) {
-			FILE *pFile = fopen(filename, "a");
+            close_file();
 
-			if (pFile == NULL) {
-				cout << "can't open file" << endl;
-			}
-			else {
-				fclose (pFile);
-			}
-		}
+            for (int i = 0; i < result; i++) {
+                cout << buffer[i] << endl;
+            }
+
+            free (buffer);
+        }
+
+        void create_file(void) {
+            pFile = fopen(filename, "wb");
+
+            if (pFile == NULL) {
+                cout << "can't open file" << endl;
+            }}
+
+        void write_file(void) {
+            char buffer[] = {'2', '5'};
+            fwrite(buffer, sizeof(char), sizeof(buffer), pFile);
+            close_file();
+        }
+
+        void close_file() {
+            fclose(pFile);
+        }
 };

@@ -4,14 +4,16 @@
 
 using namespace std;
 
-class OneElementAtTime {
+class LimitedBufferSize {
     private:
         const char *filename;
         int file;
+        int buffer_size;
 
 	public:
-        OneElementAtTime(const char *f) {
+        LimitedBufferSize(const char *f, int s) {
             filename = f;
+            buffer_size = s;
         }
 
         void open_file(void) {
