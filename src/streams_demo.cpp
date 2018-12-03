@@ -18,17 +18,17 @@ class InputStream {
         }
 
         void open_file(void) {
-            DataStream obj(filename);
+            LimitedBufferSize obj(filename, 10);
             obj.open_file();
         }
 
         void read_file(void) {
-            DataStream obj(filename);
+            LimitedBufferSize obj(filename,10);
             obj.read_file();
         }
 
         void close_file(void) {
-            DataStream obj(filename);
+            LimitedBufferSize obj(filename,10);
             obj.close_file();
         }
 
@@ -49,17 +49,17 @@ class OutputStream {
         }
 
         void create_file(void) {
-            DataStream obj(filename);
+            LimitedBufferSize obj(filename,10);
             obj.create_file();
         }
 
         void write_file(void) {
-            DataStream obj(filename);
+            LimitedBufferSize obj(filename,10);
             obj.write_file();
         }
 
         void close_file(void) {
-            DataStream obj(filename);
+            LimitedBufferSize obj(filename,10);
             obj.close_file();
         }
 };
