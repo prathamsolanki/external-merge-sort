@@ -12,6 +12,9 @@ using namespace std;
 
 class IOMechanisms {
     private:
+        clock_t begin;
+        clock_t end;
+        double elapsed_secs;
         int N[12] = {10000, 100000, 1000000, 2000000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 10000000};
 
     public:
@@ -21,22 +24,26 @@ class IOMechanisms {
             char input_file[] = "../data/input.txt";
             char output_file[] = "../data/output.txt";
 
+            FILE *in;
+            int file;
+            bool end_of_stream;
+
             for (int i = 0; i < 12; i++) {
-                FILE* in = fopen(input_file, "w");
+                in = fopen(input_file, "w");
                 for (int n = 0; n < N[i]; n++) {
                     fprintf(in, "%d", rand()%10);
                 }
                 fclose(in);
 
-                int file = obj.open_file(input_file);
+                file = obj.open_file(input_file);
 
-                bool end_of_stream = false;
+                end_of_stream = false;
 
-                clock_t begin = clock();
+                begin = clock();
                 while (end_of_stream != true) end_of_stream = obj.read_next(file);
-                clock_t end = clock();
+                end = clock();
 
-                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
                 cout << elapsed_secs << endl;
 
                 obj.close_file(file);
@@ -46,15 +53,15 @@ class IOMechanisms {
             cout << endl;
 
             for (int i = 0; i < 12; i++) {
-                int file = obj.create_file(output_file);
+                file = obj.create_file(output_file);
 
-                clock_t begin = clock();
+                begin = clock();
                 for (int n = 0; n < N[i]; n++) {
                     obj.write_file(file);
                 }
-                clock_t end = clock();
+                end = clock();
 
-                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
                 cout << elapsed_secs << endl;
 
                 obj.close_file(file);
@@ -68,20 +75,23 @@ class IOMechanisms {
             char input_file[] = "../data/input.txt";
             char output_file[] = "../data/output.txt";
 
+            FILE *in;
+            FILE *pFile;
+
             for (int i = 0; i < 12; i++) {
-                FILE* in = fopen(input_file, "w");
+                in = fopen(input_file, "w");
                 for (int n = 0; n < N[i]; n++) {
                     fprintf(in, "%d", rand()%10);
                 }
                 fclose(in);
 
-                FILE *pFile = obj.open_file(input_file);
+                pFile = obj.open_file(input_file);
 
-                clock_t begin = clock();
+                begin = clock();
                 obj.read_file(pFile);
-                clock_t end = clock();
+                end = clock();
 
-                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
                 cout << elapsed_secs << endl;
 
                 obj.close_file(pFile);
@@ -90,14 +100,14 @@ class IOMechanisms {
 
             cout << endl;
 
-            for (int i = 0; i < 10; i++) {
-                FILE *pFile = obj.create_file(output_file);
+            for (int i = 0; i < 12; i++) {
+                pFile = obj.create_file(output_file);
 
-                clock_t begin = clock();
+                begin = clock();
                 obj.write_file(pFile, N[i]);
-                clock_t end = clock();
+                end = clock();
 
-                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
                 cout << elapsed_secs << endl;
 
                 obj.close_file(pFile);
@@ -106,44 +116,50 @@ class IOMechanisms {
         }
 
         void benchmark_buffered_stream_fixed_size(void) {
-            int buffer_size = 1024;
-            LimitedBufferSize obj(buffer_size);
-
             char input_file[] = "../data/input.txt";
             char output_file[] = "../data/output.txt";
 
-            for (int i = 0; i < 12; i++) {
-                FILE* in = fopen(input_file, "w");
-                for (int n = 0; n < N[i]; n++) {
-                    fprintf(in, "%d", rand()%10);
+            int buffer_size;
+            FILE *in;
+            int number_of_passes;
+
+            for (int b = 0; b < 5; b++) {
+                buffer_size = 1024 * (10^b);
+                LimitedBufferSize obj;
+
+                for (int i = 0; i < 12; i++) {
+                    in = fopen(input_file, "w");
+                    for (int n = 0; n < N[i]; n++) {
+                        fprintf(in, "%d", rand()%10);
+                    }
+                    fclose(in);
+
+                    begin = clock();
+                    obj.read_file(input_file, buffer_size);
+                    end = clock();
+
+                    elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                    cout << elapsed_secs << endl;
+
+                    unlink(input_file);
                 }
-                fclose(in);
 
-                clock_t begin = clock();
-                obj.read_file(input_file);
-                clock_t end = clock();
+                cout << endl;
 
-                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
+                for (int i = 0; i < 12; i++) {
+                    number_of_passes = ceil((float)N[i] / (float)buffer_size);
 
-                unlink(input_file);
-            }
+                    begin = clock();
+                    for (int n = 0; n < number_of_passes; n++) {
+                        obj.write_file(output_file, buffer_size);
+                    }
+                    end = clock();
 
-            cout << endl;
+                    elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                    cout << elapsed_secs << endl;
 
-            for (int i = 0; i < 12; i++) {
-                int number_of_passes = ceil((float)N[i] / (float)buffer_size);
-
-                clock_t begin = clock();
-                for (int n = 0; n < number_of_passes; n++) {
-                    obj.write_file(output_file);
+                    unlink(output_file);
                 }
-                clock_t end = clock();
-
-                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
-
-                unlink(output_file);
             }
         }
 };

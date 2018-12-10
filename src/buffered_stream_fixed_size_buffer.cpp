@@ -6,16 +6,10 @@
 using namespace std;
 
 class LimitedBufferSize {
-    private:
-        int buffer_size;
-        char * buffer = (char*) malloc (sizeof(char)*buffer_size);
-
     public:
-        LimitedBufferSize(int s) {
-            buffer_size = s;
-        }
+        void read_file(const char *filename, int buffer_size) {
+            char *buffer = (char*) malloc (sizeof(char)*buffer_size);
 
-        void read_file(const char *filename) {
             ifstream inFile(filename);
 
             while (inFile) {
@@ -23,16 +17,19 @@ class LimitedBufferSize {
             }
 
             inFile.close();
+            free(buffer);
         }
 
-        void write_file(const char *filename) {
+        void write_file(const char *filename, int buffer_size) {
+            char *buffer = (char*) malloc (sizeof(char)*buffer_size);
+            memset(buffer, '4', sizeof(char)*buffer_size);
+
             fstream outFile;
             outFile.open(filename, fstream::out | fstream::app);
-
-            memset(buffer, '4', sizeof(buffer));
 
             outFile.write(buffer, buffer_size);
 
             outFile.close();
+            free(buffer);
         }
 };

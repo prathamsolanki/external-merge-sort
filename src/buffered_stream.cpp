@@ -15,10 +15,10 @@ class BufferedStream {
             long lSize = ftell (pFile);
             rewind (pFile);
 
-            char * buffer = (char*) malloc (sizeof(char)*lSize);
+            char *buffer = (char*) malloc (sizeof(char)*lSize);
 
             size_t bytes_read = fread (buffer,1,lSize,pFile);
-            
+
             free(buffer);
         }
 
@@ -27,9 +27,9 @@ class BufferedStream {
         }
 
         void write_file(FILE *pFile, int N) {
-            char buffer[N];
-            memset(buffer, '4', sizeof(buffer));
-            fwrite(buffer, sizeof(char), sizeof(buffer), pFile);
+            char *buffer = (char*) malloc (sizeof(char)*N);
+            memset(buffer, '4', sizeof(char)*N);
+            fwrite(buffer, sizeof(char), sizeof(char)*N, pFile);
         }
 
         void close_file(FILE *pFile) {
