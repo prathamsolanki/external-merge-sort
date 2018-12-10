@@ -298,10 +298,10 @@ void externalSort(char* input_file, char *output_file,
 int main() 
 { 
 	// Size of main memory available
-	int m = 1024; 
+	int m = 10; 
 
     // Size of input file
-    int n = 2048;
+    int n = 20;
 
 	// Number of sorted sublists
     int num_ways = ceil(n/m);
@@ -315,7 +315,7 @@ int main()
 
 	// generate input 
 	for (int i = 0; i < n; i++) 
-		fprintf(in, "%d ", rand()); 
+		fprintf(in, "%d ", rand()% 10); 
 
 	fclose(in); 
 

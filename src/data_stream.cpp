@@ -5,49 +5,28 @@
 using namespace std;
 
 class DataStream {
-    private:
-        const char *filename;
-        int file;
-
     public:
-        DataStream(const char *f) {
-            filename = f;
+        int open_file(const char *filename) {
+            return open(filename, O_RDONLY);
         }
 
-        void open_file(void) {
-            file = open(filename, O_RDONLY);
-
-            if (file < 0) cout << "can't open file" << endl;
-        }
-
-        void read_file(void) {
+        bool read_next(int file) {
             char c;
-            ssize_t isLastElement = 1;
-            while (isLastElement != 0) {
-                isLastElement = read(file, (void*)&c, 1);
-                cout << c;
-            }
-            cout << endl;
+            ssize_t bytes_read = read(file, (void*)&c, 1);
+            if (bytes_read == 0) return true;
+            else return false;
         }
 
-        void create_file() {
-            file = open (filename, O_WRONLY | O_CREAT | O_TRUNC, O_RDWR);
-
-            if (file < 0) cout << "can't create file" << endl;
+        int create_file(const char *filename) {
+            return open (filename, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR, O_RDWR);
         }
 
-        void write_file() {
-            int file = open(filename, O_WRONLY | O_APPEND);
-
-            char c;
-            cout << "Enter element to enter: " << endl;
-            cin >> c;
-            ssize_t successfullyWritten = write(file, (void*)&c, 1);
-            if (successfullyWritten == 0) cout << "couldn't be written" << endl;
-            else cout << "successfully written " << c << endl;
+        void write_file(int file) {
+            char c = '4';
+            write(file, (void*)&c, 1);
         }
 
-        void close_file(void) {
+        void close_file(int file) {
             close(file);
         }
 };
