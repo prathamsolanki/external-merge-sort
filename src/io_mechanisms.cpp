@@ -2,9 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "iostream"
+#include <math.h>
 
 #include "data_stream.cpp"
 #include "buffered_stream.cpp"
+#include "buffered_stream_fixed_size_buffer.cpp"
 
 using namespace std;
 
@@ -99,6 +101,48 @@ class IOMechanisms {
                 cout << elapsed_secs << endl;
 
                 obj.close_file(pFile);
+                unlink(output_file);
+            }
+        }
+
+        void benchmark_buffered_stream_fixed_size(void) {
+            int buffer_size = 1024;
+            LimitedBufferSize obj(buffer_size);
+
+            char input_file[] = "../data/input.txt";
+            char output_file[] = "../data/output.txt";
+
+            for (int i = 0; i < 12; i++) {
+                FILE* in = fopen(input_file, "w");
+                for (int n = 0; n < N[i]; n++) {
+                    fprintf(in, "%d", rand()%10);
+                }
+                fclose(in);
+
+                clock_t begin = clock();
+                obj.read_file(input_file);
+                clock_t end = clock();
+
+                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << elapsed_secs << endl;
+
+                unlink(input_file);
+            }
+
+            cout << endl;
+
+            for (int i = 0; i < 12; i++) {
+                int number_of_passes = ceil((float)N[i] / (float)buffer_size);
+
+                clock_t begin = clock();
+                for (int n = 0; n < number_of_passes; n++) {
+                    obj.write_file(output_file);
+                }
+                clock_t end = clock();
+
+                double elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << elapsed_secs << endl;
+
                 unlink(output_file);
             }
         }
