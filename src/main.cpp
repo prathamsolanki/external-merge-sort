@@ -11,9 +11,15 @@ int main(int argc, char *argv[])
 
     io_mech.benchmark_data_stream();
     cout << endl;
+
     io_mech.benchmark_buffered_stream();
     cout << endl;
+
     io_mech.benchmark_buffered_stream_fixed_size();
+    cout << endl;
+
+    io_mech.benchmark_memory_mapped_file_io();
+    cout << endl;
 
     return 0;
 }

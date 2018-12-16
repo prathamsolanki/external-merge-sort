@@ -7,6 +7,7 @@
 #include "data_stream.cpp"
 #include "buffered_stream.cpp"
 #include "buffered_stream_fixed_size_buffer.cpp"
+#include "memory_mapped_file_io.cpp"
 
 using namespace std;
 
@@ -160,6 +161,37 @@ class IOMechanisms {
 
                     unlink(output_file);
                 }
+            }
+        }
+
+        void benchmark_memory_mapped_file_io(void) {
+            char input_file[] = "../data/input.txt";
+            char output_file[] = "../data/output.txt";
+
+            MemoryMappedFileIO obj;
+
+            for (int i = 0; i < 12; i++) {
+                begin = clock();
+                obj.read_file(input_file, N[i]);
+                end = clock();
+
+                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << elapsed_secs << endl;
+
+                unlink(input_file);
+            }
+
+            cout << endl;
+
+            for (int i = 0; i < 12; i++) {
+                begin = clock();
+                obj.write_file(output_file, N[i]);
+                end = clock();
+
+                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << elapsed_secs << endl;
+
+                unlink(output_file);
             }
         }
 };
