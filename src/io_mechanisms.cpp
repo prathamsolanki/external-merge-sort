@@ -125,7 +125,7 @@ class IOMechanisms {
             int number_of_passes;
 
             for (int b = 0; b < 5; b++) {
-                buffer_size = 1024 * (10^b);
+                buffer_size = 1024 * pow(10, b);
                 LimitedBufferSize obj;
 
                 for (int i = 0; i < 12; i++) {
@@ -174,7 +174,7 @@ class IOMechanisms {
 
             MemoryMappedFileIO obj;
             for (int b = 0; b < 5; b++) {
-                buffer_size = 1024 * (10^b);
+                buffer_size = 1024 * pow(10, b);
 
                 for (int i = 0; i < 12; i++) {
                     begin = clock();
