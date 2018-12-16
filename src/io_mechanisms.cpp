@@ -45,7 +45,7 @@ class IOMechanisms {
                 end = clock();
 
                 elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
+                cout << "(R)"  << "N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                 obj.close_file(file);
                 unlink(input_file);
@@ -63,7 +63,7 @@ class IOMechanisms {
                 end = clock();
 
                 elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
+                cout << "(W)"  << "N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                 obj.close_file(file);
                 unlink(output_file);
@@ -93,7 +93,7 @@ class IOMechanisms {
                 end = clock();
 
                 elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
+                cout << "(R)"  << "N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                 obj.close_file(pFile);
                 unlink(input_file);
@@ -109,7 +109,7 @@ class IOMechanisms {
                 end = clock();
 
                 elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
+                cout << "(W)"  << "N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                 obj.close_file(pFile);
                 unlink(output_file);
@@ -140,7 +140,7 @@ class IOMechanisms {
                     end = clock();
 
                     elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                    cout << elapsed_secs << endl;
+                    cout << "(R)"  << "b: " << buffer_size << " N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                     unlink(input_file);
                 }
@@ -157,10 +157,12 @@ class IOMechanisms {
                     end = clock();
 
                     elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                    cout << elapsed_secs << endl;
+                    cout << "(W)"  << "b: " << buffer_size << " N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                     unlink(output_file);
                 }
+
+                cout << endl;
             }
         }
 
@@ -168,30 +170,37 @@ class IOMechanisms {
             char input_file[] = "../data/input.txt";
             char output_file[] = "../data/output.txt";
 
+            int buffer_size;
+
             MemoryMappedFileIO obj;
+            for (int b = 0; b < 5; b++) {
+                buffer_size = 1024 * (10^b);
 
-            for (int i = 0; i < 12; i++) {
-                begin = clock();
-                obj.read_file(input_file, N[i]);
-                end = clock();
+                for (int i = 0; i < 12; i++) {
+                    begin = clock();
+                    obj.read_file(input_file, N[i], buffer_size);
+                    end = clock();
 
-                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
+                    elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                    cout << "(R)"  << "b: " << buffer_size << " N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
-                unlink(input_file);
-            }
+                    unlink(input_file);
+                }
 
-            cout << endl;
+                cout << endl;
 
-            for (int i = 0; i < 12; i++) {
-                begin = clock();
-                obj.write_file(output_file, N[i]);
-                end = clock();
+                for (int i = 0; i < 12; i++) {
+                    begin = clock();
+                    obj.write_file(output_file, N[i], buffer_size);
+                    end = clock();
 
-                elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
-                cout << elapsed_secs << endl;
+                    elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                    cout << "(W)"  << "b: " << buffer_size << " N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
-                unlink(output_file);
+                    unlink(output_file);
+                }
+
+                cout << endl;
             }
         }
 };
