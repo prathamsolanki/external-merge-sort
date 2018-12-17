@@ -159,10 +159,10 @@ FILE* openFile(char* fileName, char* mode)
 
 // Merges k sorted files. Names of files are assumed 
 // to be 1, 2, 3, ... k 
-void mergeFiles(char *output_file, int n, int k) 
+void mergeFiles(char *output_file, int d) 
 { 
-	FILE* in[k]; 
-	for (int i = 0; i < k; i++) 
+	FILE* in[d]; 
+	for (int i = 0; i < d; i++) 
 	{ 
 		char fileName[2]; 
 
@@ -170,7 +170,8 @@ void mergeFiles(char *output_file, int n, int k)
 		snprintf(fileName, sizeof(fileName), "%d", i); 
 
 		// Open output files in read mode. 
-		in[i] = openFile(fileName, "r"); 
+		in[i] = openFile(fileName, "r");
+        remove(fileName);
 	} 
 
 	// FINAL OUTPUT FILE 
@@ -178,9 +179,9 @@ void mergeFiles(char *output_file, int n, int k)
 
 	// Create a min heap with k heap nodes. Every heap node 
 	// has first element of scratch output file 
-	MinHeapNode* harr = new MinHeapNode[k]; 
+	MinHeapNode* harr = new MinHeapNode[d]; 
 	int i; 
-	for (i = 0; i < k; i++) 
+	for (i = 0; i < d; i++) 
 	{ 
 		// break if no output file is empty and 
 		// index i will be no. of input files 
@@ -216,24 +217,24 @@ void mergeFiles(char *output_file, int n, int k)
 	} 
 
 	// close input and output files 
-	for (int i = 0; i < k; i++) 
-		fclose(in[i]); 
+	for (int i = 0; i < d; i++) {
+		fclose(in[i]);
+    }
 
 	fclose(out); 
 } 
 
 // Using a merge-sort algorithm, create the initial runs 
 // and divide them evenly among the output files 
-void createInitialRuns(char *input_file, int run_size, 
-					int num_ways) 
+void createInitialRuns(char *input_file, int M, int num_sublists) 
 { 
 	// For big input file 
 	FILE *in = openFile(input_file, "r"); 
 
 	// output scratch files 
-	FILE* out[num_ways]; 
+	FILE* out[num_sublists]; 
 	char fileName[2]; 
-	for (int i = 0; i < num_ways; i++) 
+	for (int i = 0; i < num_sublists; i++) 
 	{ 
 		// convert i to string 
 		snprintf(fileName, sizeof(fileName), "%d", i); 
@@ -244,7 +245,7 @@ void createInitialRuns(char *input_file, int run_size,
 
 	// allocate a dynamic array large enough 
 	// to accommodate runs of size run_size 
-	int* arr = (int*)malloc(run_size * sizeof(int)); 
+	int* arr = (int*)malloc(M * sizeof(int)); 
 
 	bool more_input = true; 
 	int next_output_file = 0; 
@@ -253,7 +254,7 @@ void createInitialRuns(char *input_file, int run_size,
 	while (more_input) 
 	{ 
 		// write run_size elements into arr from input file 
-		for (i = 0; i < run_size; i++) 
+		for (i = 0; i < M; i++) 
 		{ 
 			if (fscanf(in, "%d ", &arr[i]) != 1) 
 			{ 
@@ -275,51 +276,52 @@ void createInitialRuns(char *input_file, int run_size,
 	} 
 
 	// close input and output files 
-	for (int i = 0; i < num_ways; i++) 
+	for (int i = 0; i < num_sublists; i++) 
 		fclose(out[i]); 
 
 	fclose(in); 
 } 
 
 // For sorting data stored on disk 
-void externalSort(char* input_file, char *output_file, 
-				int num_ways, int run_size) 
+void externalSort(char* input_file, char *output_file, int num_sublists, int M, int d)
 { 
 	// read the input file, create the initial runs, 
 	// and assign the runs to the scratch output files 
-	createInitialRuns(input_file, run_size, num_ways); 
+	createInitialRuns(input_file, M, num_sublists); 
 
 	// Merge the runs using the K-way merging 
-	mergeFiles(output_file, run_size, num_ways); 
+	mergeFiles(output_file, d);
 } 
-
 
 // Driver program to test above 
 int main() 
 { 
 	// Size of main memory available
-	int m = 10; 
+	int M = 5; 
 
     // Size of input file
-    int n = 20;
+    int N = 20;
+
+    // Number of lists to merge
+    int d = 4;
 
 	// Number of sorted sublists
-    int num_ways = ceil(n/m);
+    int num_sublists = ceil(N/M);
 
-	char input_file[] = "input.txt"; 
-	char output_file[] = "output.txt"; 
+	char input_file[] = "../data/input.txt"; 
+	char output_file[] = "../data/output.txt"; 
 
 	FILE* in = openFile(input_file, "w"); 
 
 	srand(time(NULL)); 
 
 	// generate input 
-	for (int i = 0; i < n; i++) 
+	for (int i = 0; i < N; i++) 
 		fprintf(in, "%d ", rand()% 10); 
 
 	fclose(in); 
 
-	externalSort(input_file, output_file, num_ways, m); 
+	externalSort(input_file, output_file, num_sublists, M, d); 
 
 	return 0; 
 }
