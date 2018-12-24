@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
 
     cout << "#### Benchmarking External Merge Sort" << endl;
     int M = 5; 
-    int N = 20;
-    int d = 4;
+    int N = 22;
+    int d = 5;
 
-    int num_sublists = ceil(N/M);
+    int num_sublists = ceil(float(N)/float(M));
 
     char input_file[] = "../data/input.txt"; 
     char output_file[] = "../data/output.txt"; 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
     fclose(in); 
 
-    externalSort(input_file, output_file, num_sublists, M, d);
+    externalSort(input_file, N, output_file, num_sublists, M, d);
 
     return 0;
 }

@@ -31,8 +31,7 @@ class MinHeap {
         heap_size = size; 
         harr = a; 
         int i = (heap_size - 1) / 2; 
-        while (i >= 0) 
-        { 
+        while (i >= 0) { 
             MinHeapify(i); 
             i--; 
         } 
@@ -66,36 +65,33 @@ class MinHeap {
 }; 
 
 void merge_sublists (char *output_file, int d) { 
-    int in[d]; 
+    int sublists[d]; 
     for (int i = 0; i < d; i++) { 
         char fileName[2]; 
 
         snprintf(fileName, sizeof(fileName), "%d", i); 
 
-        in[i] = open(fileName, O_RDONLY);
+        sublists[i] = open(fileName, O_RDONLY);
     } 
 
-    int out = open (output_file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR, O_RDWR); 
+    int merged_list = open(output_file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR, O_RDWR); 
 
     MinHeapNode harr[d]; 
     int i; 
-    for (i = 0; i < d; i++) 
-    {
-        read(in[i], (void*)&harr[i].element, 1);
-        
+    for (i = 0; i < d; i++) {
+        read(sublists[i], (void*)&harr[i].element, 1);
+
         harr[i].i = i;
     } 
     MinHeap hp(harr, i);
 
     int count = 0; 
 
-    while (count != i) 
-    { 
+    while (count != i) { 
         MinHeapNode root = hp.getMin(); 
-        write(out, (void*)&root.element, 1); 
+        write(merged_list, (void*)&root.element, 1); 
 
-        if (read(in[root.i], (void*)&root.element, 1) == 0) 
-        { 
+        if (read(sublists[root.i], (void*)&root.element, 1) == 0) { 
             root.element = CHAR_MAX; 
             count++; 
         } 
@@ -104,41 +100,47 @@ void merge_sublists (char *output_file, int d) {
     }
 
     for (int i = 0; i < d; i++) {
-        close(in[i]);
+        close(sublists[i]);
     }
 
-    close(out); 
+    close(merged_list); 
 } 
 
-void create_sorted_sublists (char *input_file, int M, int num_sublists) {
-    ifstream inFile(input_file);
+void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
+    ifstream in(input_file);
 
-    fstream outFile[num_sublists]; 
+    fstream sublists[num_sublists]; 
     char fileName[2]; 
     for (int i = 0; i < num_sublists; i++) {
         snprintf(fileName, sizeof(fileName), "%d", i);
-        outFile[i].open(fileName, fstream::out);
+        sublists[i].open(fileName, fstream::out);
     } 
 
     char *buffer = (char*) malloc (sizeof(char)*M);
 
-    int next_output_file = 0; 
+    int count_sublist = 0; 
 
     for (int n = 0; n < num_sublists; n++) { 
-        inFile.read(buffer, M);
+        int buffer_size;
+        if (n == num_sublists-1) buffer_size = N - (M * (num_sublists-1));
+        else buffer_size = M;
 
-        sort(buffer, buffer + M);
+        cout << buffer_size;
 
-        outFile[next_output_file].write(buffer, M);
-        outFile[next_output_file].close();
+        in.read(buffer, buffer_size);
 
-        next_output_file++;
+        sort(buffer, buffer + buffer_size);
+
+        sublists[count_sublist].write(buffer, buffer_size);
+        sublists[count_sublist].close();
+
+        count_sublist++;
     }
 
-    inFile.close();
+    in.close();
 } 
 
-void externalSort(char* input_file, char *output_file, int num_sublists, int M, int d) { 
-    create_sorted_sublists(input_file, M, num_sublists);
+void externalSort(char* input_file, int N, char *output_file, int num_sublists, int M, int d) { 
+    create_sorted_sublists(input_file, N, M, num_sublists);
     merge_sublists(output_file, d);
 } 
