@@ -2,12 +2,13 @@
 #include <string.h>
 
 #include "io_mechanisms.cpp"
+#include "external_merge_sort.cpp"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    IOMechanisms io_mech;
+    /*IOMechanisms io_mech;
 
     cout << "#### Benchmarking Data Stream ####" << endl;
     io_mech.benchmark_data_stream();
@@ -23,7 +24,27 @@ int main(int argc, char *argv[])
 
     cout << "#### Benchmarking Memory Mapped File IO ####" << endl;;
     io_mech.benchmark_memory_mapped_file_io();
-    cout << endl;
+    cout << endl;*/
+
+    cout << "#### Benchmarking External Merge Sort" << endl;
+    int M = 5; 
+    int N = 20;
+    int d = 4;
+
+    int num_sublists = ceil(N/M);
+
+    char input_file[] = "../data/input.txt"; 
+    char output_file[] = "../data/output.txt"; 
+
+    FILE* in = fopen(input_file, "w"); 
+
+    srand(time(NULL)); 
+    for (int i = 0; i < N; i++) 
+        fprintf(in, "%d", rand()% 10); 
+
+    fclose(in); 
+
+    externalSort(input_file, output_file, num_sublists, M, d);
 
     return 0;
 }
