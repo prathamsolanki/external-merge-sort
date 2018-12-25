@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     cout << "#### Benchmarking External Merge Sort" << endl;
     int M = 5; 
     int N = 22;
-    int d = 5;
+    int d = 3;
 
     int num_sublists = ceil(float(N)/float(M));
 

@@ -1,4 +1,5 @@
 #include <iostream> 
+#include <queue>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -7,6 +8,8 @@
 #include <fstream>
 #include <unistd.h>
 #include <fcntl.h>
+#include <cstring>
+#include <experimental/filesystem>
 
 using namespace std; 
 
@@ -64,17 +67,15 @@ class MinHeap {
     } 
 }; 
 
-void merge_sublists (char *output_file, int d) { 
-    int sublists[d]; 
+void merge_sublists (int sublists_to_merge[], int d) {
+    int sublists[d];
+    char fileName[2];
     for (int i = 0; i < d; i++) { 
-        char fileName[2]; 
-
-        snprintf(fileName, sizeof(fileName), "%d", i); 
-
+        snprintf(fileName, sizeof(fileName), "%d", sublists_to_merge[i]);
         sublists[i] = open(fileName, O_RDONLY);
     } 
 
-    int merged_list = open(output_file, O_WRONLY | O_CREAT | O_TRUNC, S_IWUSR, O_RDWR); 
+    int merged_list = open("temp", O_RDWR | O_CREAT, 0666);
 
     MinHeapNode harr[d]; 
     int i; 
@@ -103,7 +104,12 @@ void merge_sublists (char *output_file, int d) {
         close(sublists[i]);
     }
 
-    close(merged_list); 
+    close(merged_list);
+
+    char p[2];
+    sprintf(p, "%d", sublists_to_merge[0]);
+    remove(p);
+    std::experimental::filesystem::copy("temp", p);
 } 
 
 void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
@@ -125,8 +131,6 @@ void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
         if (n == num_sublists-1) buffer_size = N - (M * (num_sublists-1));
         else buffer_size = M;
 
-        cout << buffer_size;
-
         in.read(buffer, buffer_size);
 
         sort(buffer, buffer + buffer_size);
@@ -142,5 +146,28 @@ void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
 
 void externalSort(char* input_file, int N, char *output_file, int num_sublists, int M, int d) { 
     create_sorted_sublists(input_file, N, M, num_sublists);
-    merge_sublists(output_file, d);
+
+    priority_queue<int> q;
+    for (int i = 0; i < num_sublists; i++) q.push(i);
+
+    while (q.size() > 1) {
+        if (q.size() < d) {
+            int temp[q.size()];
+            for (int i = 0; i < q.size(); i++) {
+                temp[i] = q.top();
+                q.pop();
+            }
+            merge_sublists(temp, sizeof(temp) / sizeof(*temp));
+            q.push(temp[0]);
+        }
+        else {
+            int temp[d];
+            for (int i = 0; i < d; i++) {
+                temp[i] = q.top();
+                q.pop();
+            }
+            merge_sublists(temp, sizeof(temp) / sizeof(*temp));
+            q.push(temp[0]);
+        }
+    }
 } 
