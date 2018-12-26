@@ -1,0 +1,666 @@
+#### Benchmarking Data Stream ####
+(R)N: 10000 Elapsed Time: 8.466
+
+(W)N: 10000 Elapsed Time: 16.28
+(R)N: 100000 Elapsed Time: 57.512
+
+(W)N: 100000 Elapsed Time: 131.822
+(R)N: 1000000 Elapsed Time: 560.862
+
+(W)N: 1000000 Elapsed Time: 1325.89
+(R)N: 2000000 Elapsed Time: 1131.65
+
+(W)N: 2000000 Elapsed Time: 2680.61
+(R)N: 3000000 Elapsed Time: 1668.78
+
+(W)N: 3000000 Elapsed Time: 3935.91
+(R)N: 4000000 Elapsed Time: 2209.77
+
+(W)N: 4000000 Elapsed Time: 5244.07
+(R)N: 5000000 Elapsed Time: 2748.3
+
+(W)N: 5000000 Elapsed Time: 6614.68
+(R)N: 6000000 Elapsed Time: 3349.06
+
+(W)N: 6000000 Elapsed Time: 7937.37
+(R)N: 7000000 Elapsed Time: 3992.3
+
+(W)N: 7000000 Elapsed Time: 9337.03
+(R)N: 8000000 Elapsed Time: 4540.02
+
+(W)N: 8000000 Elapsed Time: 10538
+(R)N: 9000000 Elapsed Time: 5105.49
+
+(W)N: 9000000 Elapsed Time: 11944.3
+(R)N: 10000000 Elapsed Time: 5646.82
+
+(W)N: 10000000 Elapsed Time: 13150.3
+
+#### Benchmarking Buffered Stream ####
+(R)N: 10000 Elapsed Time: 0.039
+
+(W)N: 10000 Elapsed Time: 0.016
+(R)N: 100000 Elapsed Time: 0.048
+
+(W)N: 100000 Elapsed Time: 0.069
+(R)N: 1000000 Elapsed Time: 0.64
+
+(W)N: 1000000 Elapsed Time: 1.347
+(R)N: 2000000 Elapsed Time: 1.313
+
+(W)N: 2000000 Elapsed Time: 2.104
+(R)N: 3000000 Elapsed Time: 2.151
+
+(W)N: 3000000 Elapsed Time: 3.835
+(R)N: 4000000 Elapsed Time: 2.549
+
+(W)N: 4000000 Elapsed Time: 4.841
+(R)N: 5000000 Elapsed Time: 3.113
+
+(W)N: 5000000 Elapsed Time: 6.343
+(R)N: 6000000 Elapsed Time: 3.742
+
+(W)N: 6000000 Elapsed Time: 7.058
+(R)N: 7000000 Elapsed Time: 4.405
+
+(W)N: 7000000 Elapsed Time: 8.657
+(R)N: 8000000 Elapsed Time: 5.525
+
+(W)N: 8000000 Elapsed Time: 9.706
+(R)N: 9000000 Elapsed Time: 5.856
+
+(W)N: 9000000 Elapsed Time: 11
+(R)N: 10000000 Elapsed Time: 6.356
+
+(W)N: 10000000 Elapsed Time: 12.255
+
+#### Benchmarking Buffered Stream (Fixed Buffer Size) ####
+(R)b: 1000 N: 10000 Elapsed Time: 0.072
+
+(W)b: 1000 N: 10000 Elapsed Time: 0.119
+
+(R)b: 1000 N: 100000 Elapsed Time: 0.041
+
+(W)b: 1000 N: 100000 Elapsed Time: 0.853
+
+(R)b: 1000 N: 1000000 Elapsed Time: 0.363
+
+(W)b: 1000 N: 1000000 Elapsed Time: 8.569
+
+(R)b: 1000 N: 2000000 Elapsed Time: 0.747
+
+(W)b: 1000 N: 2000000 Elapsed Time: 17.211
+
+(R)b: 1000 N: 3000000 Elapsed Time: 1.205
+
+(W)b: 1000 N: 3000000 Elapsed Time: 25.724
+
+(R)b: 1000 N: 4000000 Elapsed Time: 1.591
+
+(W)b: 1000 N: 4000000 Elapsed Time: 34.245
+
+(R)b: 1000 N: 5000000 Elapsed Time: 1.997
+
+(W)b: 1000 N: 5000000 Elapsed Time: 43.737
+
+(R)b: 1000 N: 6000000 Elapsed Time: 2.375
+
+(W)b: 1000 N: 6000000 Elapsed Time: 58.59
+
+(R)b: 1000 N: 7000000 Elapsed Time: 2.739
+
+(W)b: 1000 N: 7000000 Elapsed Time: 61.076
+
+(R)b: 1000 N: 8000000 Elapsed Time: 3.124
+
+(W)b: 1000 N: 8000000 Elapsed Time: 68.324
+
+(R)b: 1000 N: 9000000 Elapsed Time: 3.503
+
+(W)b: 1000 N: 9000000 Elapsed Time: 82.968
+
+(R)b: 1000 N: 10000000 Elapsed Time: 3.89
+
+(W)b: 1000 N: 10000000 Elapsed Time: 86.321
+
+(R)b: 10000 N: 10000 Elapsed Time: 0.027
+
+(W)b: 10000 N: 10000 Elapsed Time: 0.041
+
+(R)b: 10000 N: 100000 Elapsed Time: 0.033
+
+(W)b: 10000 N: 100000 Elapsed Time: 0.188
+
+(R)b: 10000 N: 1000000 Elapsed Time: 0.231
+
+(W)b: 10000 N: 1000000 Elapsed Time: 1.523
+
+(R)b: 10000 N: 2000000 Elapsed Time: 0.559
+
+(W)b: 10000 N: 2000000 Elapsed Time: 3.081
+
+(R)b: 10000 N: 3000000 Elapsed Time: 0.854
+
+(W)b: 10000 N: 3000000 Elapsed Time: 4.907
+
+(R)b: 10000 N: 4000000 Elapsed Time: 1.186
+
+(W)b: 10000 N: 4000000 Elapsed Time: 6.334
+
+(R)b: 10000 N: 5000000 Elapsed Time: 1.4
+
+(W)b: 10000 N: 5000000 Elapsed Time: 8.187
+
+(R)b: 10000 N: 6000000 Elapsed Time: 1.672
+
+(W)b: 10000 N: 6000000 Elapsed Time: 9.849
+
+(R)b: 10000 N: 7000000 Elapsed Time: 1.904
+
+(W)b: 10000 N: 7000000 Elapsed Time: 11.368
+
+(R)b: 10000 N: 8000000 Elapsed Time: 2.249
+
+(W)b: 10000 N: 8000000 Elapsed Time: 13.163
+
+(R)b: 10000 N: 9000000 Elapsed Time: 2.508
+
+(W)b: 10000 N: 9000000 Elapsed Time: 15.376
+
+(R)b: 10000 N: 10000000 Elapsed Time: 2.792
+
+(W)b: 10000 N: 10000000 Elapsed Time: 16.332
+
+(R)b: 100000 N: 10000 Elapsed Time: 0.032
+
+(W)b: 100000 N: 10000 Elapsed Time: 0.104
+
+(R)b: 100000 N: 100000 Elapsed Time: 0.027
+
+(W)b: 100000 N: 100000 Elapsed Time: 0.084
+
+(R)b: 100000 N: 1000000 Elapsed Time: 0.286
+
+(W)b: 100000 N: 1000000 Elapsed Time: 0.738
+
+(R)b: 100000 N: 2000000 Elapsed Time: 0.523
+
+(W)b: 100000 N: 2000000 Elapsed Time: 1.463
+
+(R)b: 100000 N: 3000000 Elapsed Time: 0.849
+
+(W)b: 100000 N: 3000000 Elapsed Time: 2.274
+
+(R)b: 100000 N: 4000000 Elapsed Time: 1.031
+
+(W)b: 100000 N: 4000000 Elapsed Time: 3.225
+
+(R)b: 100000 N: 5000000 Elapsed Time: 1.279
+
+(W)b: 100000 N: 5000000 Elapsed Time: 4.154
+
+(R)b: 100000 N: 6000000 Elapsed Time: 1.586
+
+(W)b: 100000 N: 6000000 Elapsed Time: 4.812
+
+(R)b: 100000 N: 7000000 Elapsed Time: 1.811
+
+(W)b: 100000 N: 7000000 Elapsed Time: 5.659
+
+(R)b: 100000 N: 8000000 Elapsed Time: 2.036
+
+(W)b: 100000 N: 8000000 Elapsed Time: 6.673
+
+(R)b: 100000 N: 9000000 Elapsed Time: 2.242
+
+(W)b: 100000 N: 9000000 Elapsed Time: 7.491
+
+(R)b: 100000 N: 10000000 Elapsed Time: 2.41
+
+(W)b: 100000 N: 10000000 Elapsed Time: 8.155
+
+(R)b: 1000000 N: 10000 Elapsed Time: 0.047
+
+(W)b: 1000000 N: 10000 Elapsed Time: 0.998
+
+(R)b: 1000000 N: 100000 Elapsed Time: 0.032
+
+(W)b: 1000000 N: 100000 Elapsed Time: 0.661
+
+(R)b: 1000000 N: 1000000 Elapsed Time: 0.334
+
+(W)b: 1000000 N: 1000000 Elapsed Time: 0.681
+
+(R)b: 1000000 N: 2000000 Elapsed Time: 0.662
+
+(W)b: 1000000 N: 2000000 Elapsed Time: 1.466
+
+(R)b: 1000000 N: 3000000 Elapsed Time: 0.941
+
+(W)b: 1000000 N: 3000000 Elapsed Time: 2.255
+
+(R)b: 1000000 N: 4000000 Elapsed Time: 1.241
+
+(W)b: 1000000 N: 4000000 Elapsed Time: 3.1
+
+(R)b: 1000000 N: 5000000 Elapsed Time: 1.558
+
+(W)b: 1000000 N: 5000000 Elapsed Time: 3.909
+
+(R)b: 1000000 N: 6000000 Elapsed Time: 1.884
+
+(W)b: 1000000 N: 6000000 Elapsed Time: 4.546
+
+(R)b: 1000000 N: 7000000 Elapsed Time: 1.974
+
+(W)b: 1000000 N: 7000000 Elapsed Time: 5.282
+
+(R)b: 1000000 N: 8000000 Elapsed Time: 2.254
+
+(W)b: 1000000 N: 8000000 Elapsed Time: 6.008
+
+(R)b: 1000000 N: 9000000 Elapsed Time: 2.601
+
+(W)b: 1000000 N: 9000000 Elapsed Time: 7.012
+
+(R)b: 1000000 N: 10000000 Elapsed Time: 2.884
+
+(W)b: 1000000 N: 10000000 Elapsed Time: 7.714
+
+(R)b: 10000000 N: 10000 Elapsed Time: 0.049
+
+(W)b: 10000000 N: 10000 Elapsed Time: 16.227
+
+(R)b: 10000000 N: 100000 Elapsed Time: 0.059
+
+(W)b: 10000000 N: 100000 Elapsed Time: 10.407
+
+(R)b: 10000000 N: 1000000 Elapsed Time: 0.316
+
+(W)b: 10000000 N: 1000000 Elapsed Time: 10.13
+
+(R)b: 10000000 N: 2000000 Elapsed Time: 0.726
+
+(W)b: 10000000 N: 2000000 Elapsed Time: 10.019
+
+(R)b: 10000000 N: 3000000 Elapsed Time: 1.084
+
+(W)b: 10000000 N: 3000000 Elapsed Time: 10.992
+
+(R)b: 10000000 N: 4000000 Elapsed Time: 1.403
+
+(W)b: 10000000 N: 4000000 Elapsed Time: 10.076
+
+(R)b: 10000000 N: 5000000 Elapsed Time: 1.702
+
+(W)b: 10000000 N: 5000000 Elapsed Time: 10.279
+
+(R)b: 10000000 N: 6000000 Elapsed Time: 2.085
+
+(W)b: 10000000 N: 6000000 Elapsed Time: 10.034
+
+(R)b: 10000000 N: 7000000 Elapsed Time: 2.456
+
+(W)b: 10000000 N: 7000000 Elapsed Time: 10.354
+
+(R)b: 10000000 N: 8000000 Elapsed Time: 2.822
+
+(W)b: 10000000 N: 8000000 Elapsed Time: 10.43
+
+(R)b: 10000000 N: 9000000 Elapsed Time: 3.049
+
+(W)b: 10000000 N: 9000000 Elapsed Time: 10.219
+
+(R)b: 10000000 N: 10000000 Elapsed Time: 3.466
+
+(W)b: 10000000 N: 10000000 Elapsed Time: 10.164
+
+
+#### Benchmarking Memory Mapped File IO ####
+(R)b: 1000 N: 10000 Elapsed Time: 0.028
+
+(W)b: 1000 N: 10000 Elapsed Time: 0.008
+(R)b: 1000 N: 100000 Elapsed Time: 0.055
+
+(W)b: 1000 N: 100000 Elapsed Time: 0.055
+(R)b: 1000 N: 1000000 Elapsed Time: 0.571
+
+(W)b: 1000 N: 1000000 Elapsed Time: 0.534
+(R)b: 1000 N: 2000000 Elapsed Time: 1.064
+
+(W)b: 1000 N: 2000000 Elapsed Time: 1.092
+(R)b: 1000 N: 3000000 Elapsed Time: 1.647
+
+(W)b: 1000 N: 3000000 Elapsed Time: 1.666
+(R)b: 1000 N: 4000000 Elapsed Time: 2.153
+
+(W)b: 1000 N: 4000000 Elapsed Time: 2.138
+(R)b: 1000 N: 5000000 Elapsed Time: 2.824
+
+(W)b: 1000 N: 5000000 Elapsed Time: 2.711
+(R)b: 1000 N: 6000000 Elapsed Time: 3.428
+
+(W)b: 1000 N: 6000000 Elapsed Time: 3.216
+(R)b: 1000 N: 7000000 Elapsed Time: 4.035
+
+(W)b: 1000 N: 7000000 Elapsed Time: 3.91
+(R)b: 1000 N: 8000000 Elapsed Time: 4.255
+
+(W)b: 1000 N: 8000000 Elapsed Time: 4.555
+(R)b: 1000 N: 9000000 Elapsed Time: 5.133
+
+(W)b: 1000 N: 9000000 Elapsed Time: 5.089
+(R)b: 1000 N: 10000000 Elapsed Time: 5.618
+
+(W)b: 1000 N: 10000000 Elapsed Time: 5.71
+
+(R)b: 10000 N: 10000 Elapsed Time: 0.003
+
+(W)b: 10000 N: 10000 Elapsed Time: 0.002
+(R)b: 10000 N: 100000 Elapsed Time: 0.007
+
+(W)b: 10000 N: 100000 Elapsed Time: 0.008
+(R)b: 10000 N: 1000000 Elapsed Time: 0.055
+
+(W)b: 10000 N: 1000000 Elapsed Time: 0.056
+(R)b: 10000 N: 2000000 Elapsed Time: 0.108
+
+(W)b: 10000 N: 2000000 Elapsed Time: 0.108
+(R)b: 10000 N: 3000000 Elapsed Time: 0.162
+
+(W)b: 10000 N: 3000000 Elapsed Time: 0.162
+(R)b: 10000 N: 4000000 Elapsed Time: 0.215
+
+(W)b: 10000 N: 4000000 Elapsed Time: 0.215
+(R)b: 10000 N: 5000000 Elapsed Time: 0.268
+
+(W)b: 10000 N: 5000000 Elapsed Time: 0.267
+(R)b: 10000 N: 6000000 Elapsed Time: 0.32
+
+(W)b: 10000 N: 6000000 Elapsed Time: 0.37
+(R)b: 10000 N: 7000000 Elapsed Time: 0.374
+
+(W)b: 10000 N: 7000000 Elapsed Time: 0.413
+(R)b: 10000 N: 8000000 Elapsed Time: 0.427
+
+(W)b: 10000 N: 8000000 Elapsed Time: 0.428
+(R)b: 10000 N: 9000000 Elapsed Time: 0.48
+
+(W)b: 10000 N: 9000000 Elapsed Time: 0.502
+(R)b: 10000 N: 10000000 Elapsed Time: 0.533
+
+(W)b: 10000 N: 10000000 Elapsed Time: 0.533
+
+(R)b: 100000 N: 10000 Elapsed Time: 0.003
+
+(W)b: 100000 N: 10000 Elapsed Time: 0.003
+(R)b: 100000 N: 100000 Elapsed Time: 0.003
+
+(W)b: 100000 N: 100000 Elapsed Time: 0.003
+(R)b: 100000 N: 1000000 Elapsed Time: 0.007
+
+(W)b: 100000 N: 1000000 Elapsed Time: 0.008
+(R)b: 100000 N: 2000000 Elapsed Time: 0.013
+
+(W)b: 100000 N: 2000000 Elapsed Time: 0.014
+(R)b: 100000 N: 3000000 Elapsed Time: 0.018
+
+(W)b: 100000 N: 3000000 Elapsed Time: 0.018
+(R)b: 100000 N: 4000000 Elapsed Time: 0.024
+
+(W)b: 100000 N: 4000000 Elapsed Time: 0.023
+(R)b: 100000 N: 5000000 Elapsed Time: 0.028
+
+(W)b: 100000 N: 5000000 Elapsed Time: 0.029
+(R)b: 100000 N: 6000000 Elapsed Time: 0.034
+
+(W)b: 100000 N: 6000000 Elapsed Time: 0.034
+(R)b: 100000 N: 7000000 Elapsed Time: 0.04
+
+(W)b: 100000 N: 7000000 Elapsed Time: 0.04
+(R)b: 100000 N: 8000000 Elapsed Time: 0.045
+
+(W)b: 100000 N: 8000000 Elapsed Time: 0.045
+(R)b: 100000 N: 9000000 Elapsed Time: 0.05
+
+(W)b: 100000 N: 9000000 Elapsed Time: 0.051
+(R)b: 100000 N: 10000000 Elapsed Time: 0.06
+
+(W)b: 100000 N: 10000000 Elapsed Time: 0.055
+
+(R)b: 1000000 N: 10000 Elapsed Time: 0.003
+
+(W)b: 1000000 N: 10000 Elapsed Time: 0.003
+(R)b: 1000000 N: 100000 Elapsed Time: 0.003
+
+(W)b: 1000000 N: 100000 Elapsed Time: 0.003
+(R)b: 1000000 N: 1000000 Elapsed Time: 0.003
+
+(W)b: 1000000 N: 1000000 Elapsed Time: 0.003
+(R)b: 1000000 N: 2000000 Elapsed Time: 0.004
+
+(W)b: 1000000 N: 2000000 Elapsed Time: 0.003
+(R)b: 1000000 N: 3000000 Elapsed Time: 0.004
+
+(W)b: 1000000 N: 3000000 Elapsed Time: 0.004
+(R)b: 1000000 N: 4000000 Elapsed Time: 0.004
+
+(W)b: 1000000 N: 4000000 Elapsed Time: 0.004
+(R)b: 1000000 N: 5000000 Elapsed Time: 0.006
+
+(W)b: 1000000 N: 5000000 Elapsed Time: 0.005
+(R)b: 1000000 N: 6000000 Elapsed Time: 0.006
+
+(W)b: 1000000 N: 6000000 Elapsed Time: 0.006
+(R)b: 1000000 N: 7000000 Elapsed Time: 0.006
+
+(W)b: 1000000 N: 7000000 Elapsed Time: 0.006
+(R)b: 1000000 N: 8000000 Elapsed Time: 0.007
+
+(W)b: 1000000 N: 8000000 Elapsed Time: 0.006
+(R)b: 1000000 N: 9000000 Elapsed Time: 0.012
+
+(W)b: 1000000 N: 9000000 Elapsed Time: 0.008
+(R)b: 1000000 N: 10000000 Elapsed Time: 0.008
+
+(W)b: 1000000 N: 10000000 Elapsed Time: 0.008
+
+(R)b: 10000000 N: 10000 Elapsed Time: 0.005
+
+(W)b: 10000000 N: 10000 Elapsed Time: 0.004
+(R)b: 10000000 N: 100000 Elapsed Time: 0.004
+
+(W)b: 10000000 N: 100000 Elapsed Time: 0.003
+(R)b: 10000000 N: 1000000 Elapsed Time: 0.004
+
+(W)b: 10000000 N: 1000000 Elapsed Time: 0.003
+(R)b: 10000000 N: 2000000 Elapsed Time: 0.003
+
+(W)b: 10000000 N: 2000000 Elapsed Time: 0.003
+(R)b: 10000000 N: 3000000 Elapsed Time: 0.004
+
+(W)b: 10000000 N: 3000000 Elapsed Time: 0.004
+(R)b: 10000000 N: 4000000 Elapsed Time: 0.003
+
+(W)b: 10000000 N: 4000000 Elapsed Time: 0.003
+(R)b: 10000000 N: 5000000 Elapsed Time: 0.004
+
+(W)b: 10000000 N: 5000000 Elapsed Time: 0.003
+(R)b: 10000000 N: 6000000 Elapsed Time: 0.003
+
+(W)b: 10000000 N: 6000000 Elapsed Time: 0.003
+(R)b: 10000000 N: 7000000 Elapsed Time: 0.003
+
+(W)b: 10000000 N: 7000000 Elapsed Time: 0.003
+(R)b: 10000000 N: 8000000 Elapsed Time: 0.004
+
+(W)b: 10000000 N: 8000000 Elapsed Time: 0.004
+(R)b: 10000000 N: 9000000 Elapsed Time: 0.003
+
+(W)b: 10000000 N: 9000000 Elapsed Time: 0.003
+(R)b: 10000000 N: 10000000 Elapsed Time: 0.003
+
+(W)b: 10000000 N: 10000000 Elapsed Time: 0.003
+
+
+#### Benchmarking External Merge Sort
+(E)b: 1000 N: 10000 d: 3 Elapsed Time: 4.665
+(E)b: 1000 N: 10000 d: 4 Elapsed Time: 3.601
+(E)b: 1000 N: 10000 d: 5 Elapsed Time: 3.818
+(E)b: 1000 N: 10000 d: 6 Elapsed Time: 3.184
+(E)b: 1000 N: 10000 d: 7 Elapsed Time: 3.204
+(E)b: 1000 N: 10000 d: 8 Elapsed Time: 3.17
+(E)b: 1000 N: 10000 d: 9 Elapsed Time: 3.514
+(E)b: 1000 N: 10000 d: 10 Elapsed Time: 2.576
+(E)b: 1000 N: 100000 d: 3 Elapsed Time: 205.779
+(E)b: 1000 N: 100000 d: 4 Elapsed Time: 143.008
+(E)b: 1000 N: 100000 d: 5 Elapsed Time: 114.175
+(E)b: 1000 N: 100000 d: 6 Elapsed Time: 95.958
+(E)b: 1000 N: 100000 d: 7 Elapsed Time: 88.269
+(E)b: 1000 N: 100000 d: 8 Elapsed Time: 79.575
+(E)b: 1000 N: 100000 d: 9 Elapsed Time: 71.75
+(E)b: 1000 N: 100000 d: 10 Elapsed Time: 61.08
+(E)b: 1000 N: 1000000 d: 3 Elapsed Time: 18423.3
+(E)b: 1000 N: 1000000 d: 4 Elapsed Time: 12222.9
+(E)b: 1000 N: 1000000 d: 5 Elapsed Time: 9228.5
+(E)b: 1000 N: 1000000 d: 6 Elapsed Time: 7489.64
+(E)b: 1000 N: 1000000 d: 7 Elapsed Time: 6346.04
+(E)b: 1000 N: 1000000 d: 8 Elapsed Time: 5368.02
+(E)b: 1000 N: 1000000 d: 9 Elapsed Time: 4725.64
+(E)b: 1000 N: 1000000 d: 10 Elapsed Time: 4248.03
+(E)b: 1000 N: 2000000 d: 3 Elapsed Time: 2.31891e+06
+(E)b: 1000 N: 2000000 d: 4 Elapsed Time: 2.01551e+06
+(E)b: 1000 N: 2000000 d: 5 Elapsed Time: 1.84149e+06
+(E)b: 1000 N: 2000000 d: 6 Elapsed Time: 1.7917e+06
+(E)b: 1000 N: 2000000 d: 7 Elapsed Time: 1.76478e+06
+(E)b: 1000 N: 2000000 d: 8 Elapsed Time: 1.75502e+06
+(E)b: 1000 N: 2000000 d: 9 Elapsed Time: 1.73371e+06
+(E)b: 1000 N: 2000000 d: 10 Elapsed Time: 1.75054e+06
+(E)b: 10000 N: 10000 d: 3 Elapsed Time: 3.643
+(E)b: 10000 N: 10000 d: 4 Elapsed Time: 3.682
+(E)b: 10000 N: 10000 d: 5 Elapsed Time: 3.58
+(E)b: 10000 N: 10000 d: 6 Elapsed Time: 3.578
+(E)b: 10000 N: 10000 d: 7 Elapsed Time: 3.633
+(E)b: 10000 N: 10000 d: 8 Elapsed Time: 3.624
+(E)b: 10000 N: 10000 d: 9 Elapsed Time: 3.587
+(E)b: 10000 N: 10000 d: 10 Elapsed Time: 3.733
+(E)b: 10000 N: 100000 d: 3 Elapsed Time: 96.164
+(E)b: 10000 N: 100000 d: 4 Elapsed Time: 73.651
+(E)b: 10000 N: 100000 d: 5 Elapsed Time: 78.255
+(E)b: 10000 N: 100000 d: 6 Elapsed Time: 67.389
+(E)b: 10000 N: 100000 d: 7 Elapsed Time: 66.651
+(E)b: 10000 N: 100000 d: 8 Elapsed Time: 68.493
+(E)b: 10000 N: 100000 d: 9 Elapsed Time: 70.068
+(E)b: 10000 N: 100000 d: 10 Elapsed Time: 54.406
+(E)b: 10000 N: 1000000 d: 3 Elapsed Time: 2273.89
+(E)b: 10000 N: 1000000 d: 4 Elapsed Time: 1406.53
+(E)b: 10000 N: 1000000 d: 5 Elapsed Time: 1122.43
+(E)b: 10000 N: 1000000 d: 6 Elapsed Time: 936.01
+(E)b: 10000 N: 1000000 d: 7 Elapsed Time: 836.812
+(E)b: 10000 N: 1000000 d: 8 Elapsed Time: 769.218
+(E)b: 10000 N: 1000000 d: 9 Elapsed Time: 882.062
+(E)b: 10000 N: 1000000 d: 10 Elapsed Time: 1429.71
+(E)b: 10000 N: 2000000 d: 3 Elapsed Time: 8158.91
+(E)b: 10000 N: 2000000 d: 4 Elapsed Time: 5318.14
+(E)b: 10000 N: 2000000 d: 5 Elapsed Time: 4038.75
+(E)b: 10000 N: 2000000 d: 6 Elapsed Time: 3316.2
+(E)b: 10000 N: 2000000 d: 7 Elapsed Time: 2948.98
+(E)b: 10000 N: 2000000 d: 8 Elapsed Time: 2568.36
+(E)b: 10000 N: 2000000 d: 9 Elapsed Time: 4816.99
+(E)b: 10000 N: 2000000 d: 10 Elapsed Time: 2117.88
+(E)b: 100000 N: 10000 d: 3 Elapsed Time: 1.546
+(E)b: 100000 N: 10000 d: 4 Elapsed Time: 1.568
+(E)b: 100000 N: 10000 d: 5 Elapsed Time: 1.56
+(E)b: 100000 N: 10000 d: 6 Elapsed Time: 1.582
+(E)b: 100000 N: 10000 d: 7 Elapsed Time: 1.698
+(E)b: 100000 N: 10000 d: 8 Elapsed Time: 1.575
+(E)b: 100000 N: 10000 d: 9 Elapsed Time: 1.526
+(E)b: 100000 N: 10000 d: 10 Elapsed Time: 1.556
+(E)b: 100000 N: 100000 d: 3 Elapsed Time: 17.762
+(E)b: 100000 N: 100000 d: 4 Elapsed Time: 17.84
+(E)b: 100000 N: 100000 d: 5 Elapsed Time: 17.868
+(E)b: 100000 N: 100000 d: 6 Elapsed Time: 25.601
+(E)b: 100000 N: 100000 d: 7 Elapsed Time: 27.071
+(E)b: 100000 N: 100000 d: 8 Elapsed Time: 17.801
+(E)b: 100000 N: 100000 d: 9 Elapsed Time: 18.215
+(E)b: 100000 N: 100000 d: 10 Elapsed Time: 18.334
+(E)b: 100000 N: 1000000 d: 3 Elapsed Time: 437.254
+(E)b: 100000 N: 1000000 d: 4 Elapsed Time: 330.305
+(E)b: 100000 N: 1000000 d: 5 Elapsed Time: 351.781
+(E)b: 100000 N: 1000000 d: 6 Elapsed Time: 296.075
+(E)b: 100000 N: 1000000 d: 7 Elapsed Time: 302.037
+(E)b: 100000 N: 1000000 d: 8 Elapsed Time: 323.627
+(E)b: 100000 N: 1000000 d: 9 Elapsed Time: 314.539
+(E)b: 100000 N: 1000000 d: 10 Elapsed Time: 252.176
+(E)b: 100000 N: 2000000 d: 3 Elapsed Time: 1217.27
+(E)b: 100000 N: 2000000 d: 4 Elapsed Time: 996.941
+(E)b: 100000 N: 2000000 d: 5 Elapsed Time: 822.402
+(E)b: 100000 N: 2000000 d: 6 Elapsed Time: 746.095
+(E)b: 100000 N: 2000000 d: 7 Elapsed Time: 794.274
+(E)b: 100000 N: 2000000 d: 8 Elapsed Time: 669.822
+(E)b: 100000 N: 2000000 d: 9 Elapsed Time: 697.095
+(E)b: 100000 N: 2000000 d: 10 Elapsed Time: 713.655
+(E)b: 1000000 N: 10000 d: 3 Elapsed Time: 1.559
+(E)b: 1000000 N: 10000 d: 4 Elapsed Time: 1.707
+(E)b: 1000000 N: 10000 d: 5 Elapsed Time: 1.577
+(E)b: 1000000 N: 10000 d: 6 Elapsed Time: 1.584
+(E)b: 1000000 N: 10000 d: 7 Elapsed Time: 1.559
+(E)b: 1000000 N: 10000 d: 8 Elapsed Time: 1.572
+(E)b: 1000000 N: 10000 d: 9 Elapsed Time: 1.539
+(E)b: 1000000 N: 10000 d: 10 Elapsed Time: 1.597
+(E)b: 1000000 N: 100000 d: 3 Elapsed Time: 17.89
+(E)b: 1000000 N: 100000 d: 4 Elapsed Time: 17.989
+(E)b: 1000000 N: 100000 d: 5 Elapsed Time: 17.973
+(E)b: 1000000 N: 100000 d: 6 Elapsed Time: 18.298
+(E)b: 1000000 N: 100000 d: 7 Elapsed Time: 18.04
+(E)b: 1000000 N: 100000 d: 8 Elapsed Time: 17.963
+(E)b: 1000000 N: 100000 d: 9 Elapsed Time: 18.157
+(E)b: 1000000 N: 100000 d: 10 Elapsed Time: 25.578
+(E)b: 1000000 N: 1000000 d: 3 Elapsed Time: 216.572
+(E)b: 1000000 N: 1000000 d: 4 Elapsed Time: 227.81
+(E)b: 1000000 N: 1000000 d: 5 Elapsed Time: 222.916
+(E)b: 1000000 N: 1000000 d: 6 Elapsed Time: 215.179
+(E)b: 1000000 N: 1000000 d: 7 Elapsed Time: 214.693
+(E)b: 1000000 N: 1000000 d: 8 Elapsed Time: 215.807
+(E)b: 1000000 N: 1000000 d: 9 Elapsed Time: 217.383
+(E)b: 1000000 N: 1000000 d: 10 Elapsed Time: 215.29
+(E)b: 1000000 N: 2000000 d: 3 Elapsed Time: 571.451
+(E)b: 1000000 N: 2000000 d: 4 Elapsed Time: 574.316
+(E)b: 1000000 N: 2000000 d: 5 Elapsed Time: 585.061
+(E)b: 1000000 N: 2000000 d: 6 Elapsed Time: 1180.99
+(E)b: 1000000 N: 2000000 d: 7 Elapsed Time: 1391.15
+(E)b: 1000000 N: 2000000 d: 8 Elapsed Time: 1398.69
+(E)b: 1000000 N: 2000000 d: 9 Elapsed Time: 978.464
+(E)b: 1000000 N: 2000000 d: 10 Elapsed Time: 581.362
+(E)b: 10000000 N: 10000 d: 3 Elapsed Time: 1.795
+(E)b: 10000000 N: 10000 d: 4 Elapsed Time: 3.624
+(E)b: 10000000 N: 10000 d: 5 Elapsed Time: 3.629
+(E)b: 10000000 N: 10000 d: 6 Elapsed Time: 2.104
+(E)b: 10000000 N: 10000 d: 7 Elapsed Time: 2.082
+(E)b: 10000000 N: 10000 d: 8 Elapsed Time: 2.107
+(E)b: 10000000 N: 10000 d: 9 Elapsed Time: 2.11
+(E)b: 10000000 N: 10000 d: 10 Elapsed Time: 1.556
+(E)b: 10000000 N: 100000 d: 3 Elapsed Time: 17.913
+(E)b: 10000000 N: 100000 d: 4 Elapsed Time: 18.012
+(E)b: 10000000 N: 100000 d: 5 Elapsed Time: 18.047
+(E)b: 10000000 N: 100000 d: 6 Elapsed Time: 18.514
+(E)b: 10000000 N: 100000 d: 7 Elapsed Time: 18.029
+(E)b: 10000000 N: 100000 d: 8 Elapsed Time: 18.01
+(E)b: 10000000 N: 100000 d: 9 Elapsed Time: 18.02
+(E)b: 10000000 N: 100000 d: 10 Elapsed Time: 18.012
+(E)b: 10000000 N: 1000000 d: 3 Elapsed Time: 238.507
+(E)b: 10000000 N: 1000000 d: 4 Elapsed Time: 223.189
+(E)b: 10000000 N: 1000000 d: 5 Elapsed Time: 217.461
+(E)b: 10000000 N: 1000000 d: 6 Elapsed Time: 216.208
+(E)b: 10000000 N: 1000000 d: 7 Elapsed Time: 216.603
+(E)b: 10000000 N: 1000000 d: 8 Elapsed Time: 215.298
+(E)b: 10000000 N: 1000000 d: 9 Elapsed Time: 216.517
+(E)b: 10000000 N: 1000000 d: 10 Elapsed Time: 216.172
+(E)b: 10000000 N: 2000000 d: 3 Elapsed Time: 453.112
+(E)b: 10000000 N: 2000000 d: 4 Elapsed Time: 453.416
+(E)b: 10000000 N: 2000000 d: 5 Elapsed Time: 452.968
+(E)b: 10000000 N: 2000000 d: 6 Elapsed Time: 457.323
+(E)b: 10000000 N: 2000000 d: 7 Elapsed Time: 458.247
+(E)b: 10000000 N: 2000000 d: 8 Elapsed Time: 454.751
+(E)b: 10000000 N: 2000000 d: 9 Elapsed Time: 455.487
+(E)b: 10000000 N: 2000000 d: 10 Elapsed Time: 454.932

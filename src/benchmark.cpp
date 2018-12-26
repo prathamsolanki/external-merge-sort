@@ -51,11 +51,9 @@ class Benchmark {
 
                 obj.close_file(file);
                 unlink(input_file);
-            }
 
-            cout << endl;
+                cout << endl;
 
-            for (int i = 0; i < 12; i++) {
                 file = obj.create_file(output_file);
 
                 begin = clock();
@@ -99,11 +97,9 @@ class Benchmark {
 
                 obj.close_file(pFile);
                 unlink(input_file);
-            }
 
-            cout << endl;
+                cout << endl;
 
-            for (int i = 0; i < 12; i++) {
                 pFile = obj.create_file(output_file);
 
                 begin = clock();
@@ -145,11 +141,9 @@ class Benchmark {
                     cout << "(R)"  << "b: " << buffer_size << " N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                     unlink(input_file);
-                }
 
-                cout << endl;
+                    cout << endl;
 
-                for (int i = 0; i < 12; i++) {
                     number_of_passes = ceil((float)N[i] / (float)buffer_size);
 
                     begin = clock();
@@ -162,9 +156,9 @@ class Benchmark {
                     cout << "(W)"  << "b: " << buffer_size << " N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                     unlink(output_file);
-                }
 
-                cout << endl;
+                    cout << endl;
+                }
             }
         }
 
@@ -179,6 +173,12 @@ class Benchmark {
                 buffer_size = 1000 * pow(10, b);
 
                 for (int i = 0; i < 12; i++) {
+                    in = fopen(input_file, "w");
+                    for (int n = 0; n < N[i]; n++) {
+                        fprintf(in, "%d", rand()%10);
+                    }
+                    fclose(in);
+
                     begin = clock();
                     obj.read_file(input_file, N[i], buffer_size);
                     end = clock();
@@ -187,11 +187,9 @@ class Benchmark {
                     cout << "(R)"  << "b: " << buffer_size << " N: " << N[i] << " Elapsed Time: " << elapsed_secs << endl;
 
                     unlink(input_file);
-                }
 
-                cout << endl;
+                    cout << endl;
 
-                for (int i = 0; i < 12; i++) {
                     begin = clock();
                     obj.write_file(output_file, N[i], buffer_size);
                     end = clock();
@@ -214,7 +212,7 @@ class Benchmark {
             MemoryMappedFileIO obj;
             for (int b = 0; b < 5; b++) {
                 buffer_size = 1000 * pow(10, b);
-                for (int n = 0; n < 3; n++) {
+                for (int n = 0; n < 4; n++) {
                     in = fopen(input_file, "w");
                     for (int i = 0; i < N[n]; i++) { 
                         fprintf(in, "%d", rand()% 10); 
