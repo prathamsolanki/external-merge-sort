@@ -14,7 +14,7 @@
 using namespace std; 
 
 struct MinHeapNode { 
-    char element; 
+    int8_t element; 
 
     int i; 
 }; 
@@ -68,20 +68,19 @@ class MinHeap {
 }; 
 
 void merge_sublists (int sublists_to_merge[], int d) {
-    int sublists[d];
-    char fileName[2];
+    fstream sublists[d];
+    char fileName[10];
     for (int i = 0; i < d; i++) { 
         snprintf(fileName, sizeof(fileName), "%d", sublists_to_merge[i]);
-        sublists[i] = open(fileName, O_RDONLY);
+        sublists[i].open(fileName, fstream::in);
     } 
 
-    int merged_list = open("temp", O_RDWR | O_CREAT, 0666);
+    ofstream merged_list("temp");
 
     MinHeapNode harr[d]; 
     int i; 
     for (i = 0; i < d; i++) {
-        read(sublists[i], (void*)&harr[i].element, 1);
-
+        sublists[i] >> harr[i].element;
         harr[i].i = i;
     } 
     MinHeap hp(harr, i);
@@ -90,10 +89,10 @@ void merge_sublists (int sublists_to_merge[], int d) {
 
     while (count != i) { 
         MinHeapNode root = hp.getMin(); 
-        write(merged_list, (void*)&root.element, 1); 
+        merged_list << root.element; 
 
-        if (read(sublists[root.i], (void*)&root.element, 1) == 0) { 
-            root.element = CHAR_MAX; 
+        if (!(sublists[root.i] >> root.element)) { 
+            root.element = 127; 
             count++; 
         } 
 
@@ -101,22 +100,23 @@ void merge_sublists (int sublists_to_merge[], int d) {
     }
 
     for (int i = 0; i < d; i++) {
-        close(sublists[i]);
+        sublists[i].close();
     }
 
-    close(merged_list);
+    merged_list.close();
 
-    char p[2];
+    char p[10];
     sprintf(p, "%d", sublists_to_merge[0]);
     remove(p);
     std::experimental::filesystem::copy("temp", p);
+    remove("temp");
 } 
 
 void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
     ifstream in(input_file);
 
     fstream sublists[num_sublists]; 
-    char fileName[2]; 
+    char fileName[10]; 
     for (int i = 0; i < num_sublists; i++) {
         snprintf(fileName, sizeof(fileName), "%d", i);
         sublists[i].open(fileName, fstream::out);
@@ -144,7 +144,7 @@ void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
     in.close();
 } 
 
-void externalSort(char* input_file, int N, char *output_file, int num_sublists, int M, int d) { 
+void externalSort(char* input_file, int N, int num_sublists, int M, int d) { 
     create_sorted_sublists(input_file, N, M, num_sublists);
 
     priority_queue<int> q;
@@ -153,12 +153,14 @@ void externalSort(char* input_file, int N, char *output_file, int num_sublists, 
     while (q.size() > 1) {
         if (q.size() < d) {
             int temp[q.size()];
-            for (int i = 0; i < q.size(); i++) {
+            int i = 0;
+            while (!q.empty()) {
                 temp[i] = q.top();
                 q.pop();
+                i++;
             }
             merge_sublists(temp, sizeof(temp) / sizeof(*temp));
-            q.push(temp[0]);
+            break;
         }
         else {
             int temp[d];
