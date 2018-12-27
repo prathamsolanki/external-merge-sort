@@ -13,59 +13,21 @@
 
 using namespace std; 
 
-struct MinHeapNode { 
-    int8_t element; 
-
-    int i; 
-}; 
-
-void swap(MinHeapNode* x, MinHeapNode* y) { 
-    MinHeapNode temp = *x; 
-    *x = *y; 
-    *y = temp; 
-}
-
-class MinHeap { 
-    MinHeapNode* harr;
-    int heap_size; 
-
+class Node { 
     public:
-    MinHeap(MinHeapNode a[], int size) { 
-        heap_size = size; 
-        harr = a; 
-        int i = (heap_size - 1) / 2; 
-        while (i >= 0) { 
-            MinHeapify(i); 
-            i--; 
-        } 
-    }
+        int index;
+        int8_t element;  
 
-    void MinHeapify(int i ) { 
-        int l = left(i); 
-        int r = right(i); 
-        int smallest = i; 
-        if (l < heap_size && harr[l].element < harr[i].element) 
-            smallest = l; 
-        if (r < heap_size && harr[r].element < harr[smallest].element) 
-            smallest = r; 
-        if (smallest != i) 
-        { 
-            swap(&harr[i], &harr[smallest]); 
-            MinHeapify(smallest); 
-        } 
-    }
-
-    int left(int i) { return (2 * i + 1); } 
-
-    int right(int i) { return (2 * i + 2); } 
-
-    MinHeapNode getMin() { return harr[0]; } 
-
-    void replaceMin(MinHeapNode x) { 
-        harr[0] = x; 
-        MinHeapify(0); 
-    } 
+        Node(int index, int8_t element)
+            : index(index), element(element)
+        {
+        }
 }; 
+
+bool operator<(const Node &n1, const Node &n2)
+{
+    return n1.element > n2.element;
+}
 
 void merge_sublists (int sublists_to_merge[], int d) {
     fstream sublists[d];
@@ -77,26 +39,28 @@ void merge_sublists (int sublists_to_merge[], int d) {
 
     ofstream merged_list("temp");
 
-    MinHeapNode harr[d]; 
-    int i; 
+    priority_queue<Node> Q;
+
+    int i;
+    int8_t e;
     for (i = 0; i < d; i++) {
-        sublists[i] >> harr[i].element;
-        harr[i].i = i;
+        sublists[i] >> e;
+        Q.push(Node(i, e));
     } 
-    MinHeap hp(harr, i);
 
     int count = 0; 
 
     while (count != i) { 
-        MinHeapNode root = hp.getMin(); 
-        merged_list << root.element; 
+        Node root = Q.top();
+        merged_list << root.element;
+        Q.pop();
 
-        if (!(sublists[root.i] >> root.element)) { 
-            root.element = 127; 
+        if (!(sublists[root.index] >> e)) { 
+            Q.push(Node(root.index,127));
             count++; 
-        } 
-
-        hp.replaceMin(root); 
+        } else {
+            Q.push(Node(root.index, e));
+        }
     }
 
     for (int i = 0; i < d; i++) {
@@ -124,8 +88,6 @@ void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
 
     char *buffer = (char*) malloc (sizeof(char)*M);
 
-    int count_sublist = 0; 
-
     for (int n = 0; n < num_sublists; n++) { 
         int buffer_size;
         if (n == num_sublists-1) buffer_size = N - (M * (num_sublists-1));
@@ -135,16 +97,14 @@ void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
 
         sort(buffer, buffer + buffer_size);
 
-        sublists[count_sublist].write(buffer, buffer_size);
-        sublists[count_sublist].close();
-
-        count_sublist++;
+        sublists[n].write(buffer, buffer_size);
+        sublists[n].close();
     }
 
     in.close();
 } 
 
-void externalSort(char* input_file, int N, int num_sublists, int M, int d) { 
+void external_merge_sort(char* input_file, int N, int num_sublists, int M, int d) { 
     create_sorted_sublists(input_file, N, M, num_sublists);
 
     priority_queue<int> q;

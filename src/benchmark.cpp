@@ -167,6 +167,7 @@ class Benchmark {
             char output_file[] = "../data/output.txt";
 
             int buffer_size;
+            FILE *in;
 
             MemoryMappedFileIO obj;
             for (int b = 0; b < 5; b++) {
@@ -205,11 +206,20 @@ class Benchmark {
         }
 
         void benchmark_external_merge_sort(void) {
+  /*          char input_file[] = "../data/input.txt";
+            FILE *in = fopen(input_file, "w");
+            for (int i = 0; i < 20; i++) { 
+                fprintf(in, "%d", rand()%10); 
+            }
+            fclose(in);
+
+            //external_merge_sort(input_file, N[n], num_sublists, buffer_size, d);
+            external_merge_sort(input_file, 20, 4, 5, 3);
+*/
             char input_file[] = "../data/input.txt"; 
             int buffer_size;
             FILE *in;
 
-            MemoryMappedFileIO obj;
             for (int b = 0; b < 5; b++) {
                 buffer_size = 1000 * pow(10, b);
                 for (int n = 0; n < 4; n++) {
@@ -223,7 +233,7 @@ class Benchmark {
                         int num_sublists = ceil(float(N[n])/float(buffer_size));
 
                         begin = clock();
-                        externalSort(input_file, N[n], num_sublists, buffer_size, d);
+                        external_merge_sort(input_file, N[n], num_sublists, buffer_size, d);
                         end = clock();
 
                         elapsed_secs = double(end - begin) / (CLOCKS_PER_SEC / 1000);

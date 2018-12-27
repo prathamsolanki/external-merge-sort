@@ -7,10 +7,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
- freopen("benchmark.txt","w",stdout);
+    //freopen("benchmark.txt","w",stdout);
 
     Benchmark benchmark;
 
+    /*
     cout << "#### Benchmarking Data Stream ####" << endl;
     benchmark.benchmark_data_stream();
     cout << endl;
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
     cout << "#### Benchmarking Memory Mapped File IO ####" << endl;;
     benchmark.benchmark_memory_mapped_file_io();
     cout << endl;
-
+*/
     cout << "#### Benchmarking External Merge Sort" << endl;
     benchmark.benchmark_external_merge_sort();
 
