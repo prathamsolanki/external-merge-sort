@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "iostream"
 
 using namespace std;
 
 class BufferedStream {
     public:
         FILE* open_file(const char *filename) {
-            return fopen(filename, "r");
+            return fopen(filename, "rb");
         }
 
         void read_file(FILE *pFile) {
@@ -15,11 +16,11 @@ class BufferedStream {
             long lSize = ftell (pFile);
             rewind (pFile);
 
-            char *buffer = (char*) malloc (sizeof(char)*lSize);
+            int num_elements = lSize / sizeof(int);
 
-            size_t bytes_read = fread (buffer,1,lSize,pFile);
+            int *i = (int*)malloc(num_elements * sizeof(int));
 
-            free(buffer);
+            size_t bytes_read = fread (i, sizeof(int), num_elements, pFile);
         }
 
         FILE* create_file(const char *filename) {
@@ -27,9 +28,9 @@ class BufferedStream {
         }
 
         void write_file(FILE *pFile, int N) {
-            char *buffer = (char*) malloc (sizeof(char)*N);
-            memset(buffer, '4', sizeof(char)*N);
-            fwrite(buffer, sizeof(char), sizeof(char)*N, pFile);
+            int *i = (int*)malloc(N * sizeof(int));
+            memset(i, rand(), N * sizeof(int));
+            fwrite(i, sizeof(int), N, pFile);
         }
 
         void close_file(FILE *pFile) {
