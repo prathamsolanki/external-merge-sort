@@ -16,9 +16,9 @@ using namespace std;
 class Node { 
     public:
         int index;
-        int8_t element;  
+        int element;  
 
-        Node(int index, int8_t element)
+        Node(int index, int element)
             : index(index), element(element)
         {
         }
@@ -30,21 +30,21 @@ bool operator<(const Node &n1, const Node &n2)
 }
 
 void merge_sublists (int sublists_to_merge[], int d) {
-    fstream sublists[d];
+    int sublists[d];
     char fileName[10];
     for (int i = 0; i < d; i++) { 
         snprintf(fileName, sizeof(fileName), "%d", sublists_to_merge[i]);
-        sublists[i].open(fileName, fstream::in);
+        sublists[i] = open(fileName, O_RDONLY);
     } 
 
-    ofstream merged_list("temp");
+    int merged_list = open("temp", O_RDWR | O_CREAT | O_APPEND | O_TRUNC, S_IRUSR);
 
     priority_queue<Node> Q;
 
     int i;
-    int8_t e;
+    int e;
     for (i = 0; i < d; i++) {
-        sublists[i] >> e;
+        read(sublists[i], &e, sizeof(e));
         Q.push(Node(i, e));
     } 
 
@@ -52,11 +52,11 @@ void merge_sublists (int sublists_to_merge[], int d) {
 
     while (count != i) { 
         Node root = Q.top();
-        merged_list << root.element;
+        write(merged_list, &root.element, sizeof(root.element));
         Q.pop();
 
-        if (!(sublists[root.index] >> e)) { 
-            Q.push(Node(root.index,127));
+        if (read(sublists[root.index], &e, sizeof(e)) == 0) { 
+            Q.push(Node(root.index,INT_MAX));
             count++; 
         } else {
             Q.push(Node(root.index, e));
@@ -64,10 +64,10 @@ void merge_sublists (int sublists_to_merge[], int d) {
     }
 
     for (int i = 0; i < d; i++) {
-        sublists[i].close();
+        close(sublists[i]);
     }
 
-    merged_list.close();
+    close(merged_list);
 
     char p[10];
     sprintf(p, "%d", sublists_to_merge[0]);
@@ -77,31 +77,31 @@ void merge_sublists (int sublists_to_merge[], int d) {
 } 
 
 void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
-    ifstream in(input_file);
+    FILE *in = fopen(input_file, "rb");
 
-    fstream sublists[num_sublists]; 
+    FILE *sublists[num_sublists]; 
     char fileName[10]; 
     for (int i = 0; i < num_sublists; i++) {
         snprintf(fileName, sizeof(fileName), "%d", i);
-        sublists[i].open(fileName, fstream::out);
+        sublists[i] = fopen(fileName, "wb");
     } 
 
-    char *buffer = (char*) malloc (sizeof(char)*M);
+    int *buffer = (int*) malloc (sizeof(int)*M);
 
     for (int n = 0; n < num_sublists; n++) { 
         int buffer_size;
         if (n == num_sublists-1) buffer_size = N - (M * (num_sublists-1));
         else buffer_size = M;
 
-        in.read(buffer, buffer_size);
+        fread(buffer, sizeof(int), buffer_size, in);
 
         sort(buffer, buffer + buffer_size);
 
-        sublists[n].write(buffer, buffer_size);
-        sublists[n].close();
+        fwrite(buffer, sizeof(int), buffer_size, sublists[n]);
+        fclose(sublists[n]);
     }
 
-    in.close();
+    fclose(in);
 } 
 
 void external_merge_sort(char* input_file, int N, int num_sublists, int M, int d) { 
