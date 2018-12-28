@@ -1,35 +1,35 @@
-#include "iostream"
+#include <stdio.h>
 #include <stdlib.h>
-#include <fstream>
 #include <string.h>
+#include "iostream"
 
 using namespace std;
 
 class LimitedBufferSize {
     public:
-        void read_file(const char *filename, int buffer_size) {
-            char *buffer = (char*) malloc (sizeof(char)*buffer_size);
-
-            ifstream inFile(filename);
-
-            while (inFile) {
-                inFile.read(buffer, buffer_size);
-            }
-
-            inFile.close();
-            free(buffer);
+        FILE* open_file(const char *filename) {
+            return fopen(filename, "rb");
         }
 
-        void write_file(const char *filename, int buffer_size) {
-            char *buffer = (char*) malloc (sizeof(char)*buffer_size);
-            memset(buffer, '4', sizeof(char)*buffer_size);
+        void read_file(FILE *pFile, int buffer_size) {
+            int *buffer = (int*)malloc(buffer_size * sizeof(int));
 
-            fstream outFile;
-            outFile.open(filename, fstream::out | fstream::app);
+            while (!feof(pFile)) {
+                size_t bytes_read = fread (buffer, sizeof(int), buffer_size, pFile);
+            }
+        }
 
-            outFile.write(buffer, buffer_size);
+        FILE* create_file(const char *filename) {
+            return fopen(filename, "wb");
+        }
 
-            outFile.close();
-            free(buffer);
+        void write_file(FILE *pFile, int buffer_size) {
+            int *i = (int*)malloc(buffer_size * sizeof(int));
+            memset(i, rand(), buffer_size * sizeof(int));
+            fwrite(i, sizeof(int), buffer_size, pFile);
+        }
+
+        void close_file(FILE *pFile) {
+            fclose(pFile);
         }
 };
