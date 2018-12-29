@@ -11,15 +11,16 @@ int main(int argc, char *argv[])
 
     Benchmark benchmark;
 
-    /*
+/*    
     cout << "#### Benchmarking Data Stream ####" << endl;
     benchmark.benchmark_data_stream();
     cout << endl;
-
+    
+    
     cout << "#### Benchmarking Buffered Stream ####" << endl;
     benchmark.benchmark_buffered_stream();
     cout << endl;
-
+    
     cout << "#### Benchmarking Buffered Stream (Fixed Buffer Size) ####" << endl;
     benchmark.benchmark_buffered_stream_fixed_size();
     cout << endl;
@@ -30,6 +31,6 @@ int main(int argc, char *argv[])
 */
     cout << "#### Benchmarking External Merge Sort" << endl;
     benchmark.benchmark_external_merge_sort();
-
+    
     return 0;
 }

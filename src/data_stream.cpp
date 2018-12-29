@@ -24,7 +24,7 @@ class DataStream {
         }
 
         int create_file(const char *filename) {
-            return open (filename, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR);
+            return open (filename, O_RDWR | O_CREAT | O_APPEND | O_TRUNC, S_IRUSR);
         }
 
         void write_file(int file, int value) {
