@@ -14,9 +14,7 @@ class LimitedBufferSize {
         void read_file(FILE *pFile, int buffer_size) {
             int *buffer = (int*)malloc(buffer_size * sizeof(int));
 
-            while (!feof(pFile)) {
-                size_t bytes_read = fread (buffer, sizeof(int), buffer_size, pFile);
-            }
+            fread (buffer, sizeof(int), buffer_size, pFile);
         }
 
         FILE* create_file(const char *filename) {

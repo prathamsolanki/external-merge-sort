@@ -90,7 +90,7 @@ void create_sorted_sublists (char *input_file, int N, int M, int num_sublists) {
 
     for (int n = 0; n < num_sublists; n++) { 
         int buffer_size;
-        if (n == num_sublists-1) buffer_size = N - (M * (num_sublists-1));
+        if (n == num_sublists-1) buffer_size = N - (M * n);
         else buffer_size = M;
 
         fread(buffer, sizeof(int), buffer_size, in);

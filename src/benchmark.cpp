@@ -137,6 +137,7 @@ class Benchmark {
                 LimitedBufferSize obj;
 
                 for (int n: N) {
+                    number_of_passes = ceil((float)n / (float)b);
                     file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR);
                     for (int i_n = 0; i_n < n; i_n++) {
                         int value = rand();
@@ -147,7 +148,10 @@ class Benchmark {
                     pFile = obj.open_file(input_file);
 
                     begin = clock();
-                    obj.read_file(pFile, b);
+                    for (int i_np = 0; i_np < number_of_passes; i_np++) {
+                        if (i_np == number_of_passes - 1) obj.read_file(pFile, n - (b * i_np));
+                        else obj.read_file(pFile, b);
+                    }
                     end = clock();
 
                     elapsed_time = double(end - begin) / (CLOCKS_PER_SEC / 1000);
@@ -156,12 +160,12 @@ class Benchmark {
                     obj.close_file(pFile);
                     remove(input_file);
 
-                    number_of_passes = ceil((float)n / (float)b);
                     pFile = obj.create_file(output_file);
 
                     begin = clock();
                     for (int i_np = 0; i_np < number_of_passes; i_np++) {
-                        obj.write_file(pFile, b);
+                        if (i_np == number_of_passes - 1) obj.write_file(pFile, n - (b * i_np));
+                        else obj.write_file(pFile, b);
                     }
                     end = clock();
 
@@ -188,7 +192,7 @@ class Benchmark {
             for (int b: B) {
                 if (b < 4096) continue;
                 for (int n: N) {
-                    file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR);
+                    file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
                     for (int i_n = 0; i_n < n; i_n++) {
                         int value = rand();
                         write(file, &value, sizeof(int));
@@ -202,20 +206,14 @@ class Benchmark {
                     elapsed_time = double(end - begin) / (CLOCKS_PER_SEC / 1000);
                     cout << "(R)"  << "b: " << b << " N: " << n << " Elapsed Time: " << elapsed_time << endl;
 
-                    remove(input_file);
-
-                    ofstream ofs(output_file, std::ios::binary | std::ios::out);
-                    ofs.seekp((n*sizeof(int)<<20) - 1);
-                    ofs.write("", 1);
-
                     begin = clock();
-                    obj.write_file(output_file, n, b);
+                    obj.write_file(input_file, n, b);
                     end = clock();
 
                     elapsed_time = double(end - begin) / (CLOCKS_PER_SEC / 1000);
                     cout << "(W)"  << "b: " << b << " N: " << n << " Elapsed Time: " << elapsed_time << endl;
 
-                    remove(output_file);
+                    remove(input_file);
                 }
 
                 cout << endl;
