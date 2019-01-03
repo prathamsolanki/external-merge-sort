@@ -7,6 +7,7 @@
 #include <iostream>
 #include <utility>
 #include <algorithm>
+#include <exception>
 
 #include "data_stream.cpp"
 #include "buffered_stream.cpp"
@@ -233,21 +234,27 @@ class Benchmark {
                 }
                 close(file);
 
-                begin = clock();
+                try {
+                    begin = clock();
 
-                FILE *in = fopen(input_file, "rb");
-                int *buf = (int*) malloc (sizeof(int)*n);                
-                fread(buf, sizeof(int), n, in);
+                    FILE *in = fopen(input_file, "rb");
+                    int *buf = (int*) malloc (sizeof(int)*n);                
+                    fread(buf, sizeof(int), n, in);
+                    fclose(in);
 
-                sort(buf, buf + n);
+                    sort(buf, buf + n);
 
-                FILE *out = fopen("Sorted", "wb");
-                fwrite(buf, sizeof(int), n, out);
-                remove("Sorted");
+                    FILE *out = fopen("Sorted", "wb");
+                    fwrite(buf, sizeof(int), n, out);
+                    remove("Sorted");
+                    fclose(out);
 
-                end = clock();
+                    end = clock();
 
-                elapsed_time_stl = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                    elapsed_time_stl = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                } catch (exception &e) {
+                    cout << "Standard Exception: " << e.what() << endl;
+                }
 
                 for (int b: B) {
                     int num_sublists = ceil(float(n)/float(b));

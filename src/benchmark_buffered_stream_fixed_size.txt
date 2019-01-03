@@ -1,0 +1,326 @@
+#### Benchmarking Buffered Stream (Fixed Buffer Size) ####
+(R)b: 1024 N: 10000 Elapsed Time: 0.053
+(W)b: 1024 N: 10000 Elapsed Time: 0.068
+
+(R)b: 1024 N: 100000 Elapsed Time: 0.3
+(W)b: 1024 N: 100000 Elapsed Time: 0.509
+
+(R)b: 1024 N: 1000000 Elapsed Time: 3.159
+(W)b: 1024 N: 1000000 Elapsed Time: 5.658
+
+(R)b: 1024 N: 2000000 Elapsed Time: 6.436
+(W)b: 1024 N: 2000000 Elapsed Time: 12.244
+
+(R)b: 1024 N: 3000000 Elapsed Time: 9.623
+(W)b: 1024 N: 3000000 Elapsed Time: 20.072
+
+(R)b: 1024 N: 4000000 Elapsed Time: 12.469
+(W)b: 1024 N: 4000000 Elapsed Time: 23.632
+
+(R)b: 1024 N: 5000000 Elapsed Time: 16.951
+(W)b: 1024 N: 5000000 Elapsed Time: 41.788
+
+(R)b: 1024 N: 6000000 Elapsed Time: 18.366
+(W)b: 1024 N: 6000000 Elapsed Time: 34.786
+
+(R)b: 1024 N: 7000000 Elapsed Time: 22.147
+(W)b: 1024 N: 7000000 Elapsed Time: 41.96
+
+(R)b: 1024 N: 8000000 Elapsed Time: 26.168
+(W)b: 1024 N: 8000000 Elapsed Time: 50.768
+
+(R)b: 1024 N: 9000000 Elapsed Time: 29.796
+(W)b: 1024 N: 9000000 Elapsed Time: 55.939
+
+(R)b: 1024 N: 10000000 Elapsed Time: 36.279
+(W)b: 1024 N: 10000000 Elapsed Time: 66.298
+
+(R)b: 2048 N: 10000 Elapsed Time: 0.044
+(W)b: 2048 N: 10000 Elapsed Time: 0.059
+
+(R)b: 2048 N: 100000 Elapsed Time: 0.299
+(W)b: 2048 N: 100000 Elapsed Time: 0.572
+
+(R)b: 2048 N: 1000000 Elapsed Time: 3.546
+(W)b: 2048 N: 1000000 Elapsed Time: 7.512
+
+(R)b: 2048 N: 2000000 Elapsed Time: 6.303
+(W)b: 2048 N: 2000000 Elapsed Time: 12.749
+
+(R)b: 2048 N: 3000000 Elapsed Time: 11.454
+(W)b: 2048 N: 3000000 Elapsed Time: 23.083
+
+(R)b: 2048 N: 4000000 Elapsed Time: 12.721
+(W)b: 2048 N: 4000000 Elapsed Time: 25.741
+
+(R)b: 2048 N: 5000000 Elapsed Time: 16.149
+(W)b: 2048 N: 5000000 Elapsed Time: 33.218
+
+(R)b: 2048 N: 6000000 Elapsed Time: 22.884
+(W)b: 2048 N: 6000000 Elapsed Time: 38.158
+
+(R)b: 2048 N: 7000000 Elapsed Time: 20.499
+(W)b: 2048 N: 7000000 Elapsed Time: 41.4
+
+(R)b: 2048 N: 8000000 Elapsed Time: 23.75
+(W)b: 2048 N: 8000000 Elapsed Time: 47.277
+
+(R)b: 2048 N: 9000000 Elapsed Time: 26.161
+(W)b: 2048 N: 9000000 Elapsed Time: 52.88
+
+(R)b: 2048 N: 10000000 Elapsed Time: 29.474
+(W)b: 2048 N: 10000000 Elapsed Time: 59.619
+
+(R)b: 4096 N: 10000 Elapsed Time: 0.049
+(W)b: 4096 N: 10000 Elapsed Time: 0.067
+
+(R)b: 4096 N: 100000 Elapsed Time: 0.248
+(W)b: 4096 N: 100000 Elapsed Time: 0.456
+
+(R)b: 4096 N: 1000000 Elapsed Time: 2.902
+(W)b: 4096 N: 1000000 Elapsed Time: 5.22
+
+(R)b: 4096 N: 2000000 Elapsed Time: 5.576
+(W)b: 4096 N: 2000000 Elapsed Time: 10.657
+
+(R)b: 4096 N: 3000000 Elapsed Time: 8.283
+(W)b: 4096 N: 3000000 Elapsed Time: 15.711
+
+(R)b: 4096 N: 4000000 Elapsed Time: 10.48
+(W)b: 4096 N: 4000000 Elapsed Time: 20.49
+
+(R)b: 4096 N: 5000000 Elapsed Time: 13.067
+(W)b: 4096 N: 5000000 Elapsed Time: 25.692
+
+(R)b: 4096 N: 6000000 Elapsed Time: 16.14
+(W)b: 4096 N: 6000000 Elapsed Time: 31.555
+
+(R)b: 4096 N: 7000000 Elapsed Time: 22.184
+(W)b: 4096 N: 7000000 Elapsed Time: 41.857
+
+(R)b: 4096 N: 8000000 Elapsed Time: 21.669
+(W)b: 4096 N: 8000000 Elapsed Time: 47.201
+
+(R)b: 4096 N: 9000000 Elapsed Time: 26.016
+(W)b: 4096 N: 9000000 Elapsed Time: 51.694
+
+(R)b: 4096 N: 10000000 Elapsed Time: 26.556
+(W)b: 4096 N: 10000000 Elapsed Time: 52.385
+
+(R)b: 8192 N: 10000 Elapsed Time: 0.048
+(W)b: 8192 N: 10000 Elapsed Time: 0.049
+
+(R)b: 8192 N: 100000 Elapsed Time: 0.24
+(W)b: 8192 N: 100000 Elapsed Time: 0.409
+
+(R)b: 8192 N: 1000000 Elapsed Time: 2.62
+(W)b: 8192 N: 1000000 Elapsed Time: 4.744
+
+(R)b: 8192 N: 2000000 Elapsed Time: 5.168
+(W)b: 8192 N: 2000000 Elapsed Time: 9.559
+
+(R)b: 8192 N: 3000000 Elapsed Time: 7.538
+(W)b: 8192 N: 3000000 Elapsed Time: 14.338
+
+(R)b: 8192 N: 4000000 Elapsed Time: 12.726
+(W)b: 8192 N: 4000000 Elapsed Time: 20.148
+
+(R)b: 8192 N: 5000000 Elapsed Time: 12.204
+(W)b: 8192 N: 5000000 Elapsed Time: 23.674
+
+(R)b: 8192 N: 6000000 Elapsed Time: 15.933
+(W)b: 8192 N: 6000000 Elapsed Time: 30.21
+
+(R)b: 8192 N: 7000000 Elapsed Time: 18.758
+(W)b: 8192 N: 7000000 Elapsed Time: 35.68
+
+(R)b: 8192 N: 8000000 Elapsed Time: 27.415
+(W)b: 8192 N: 8000000 Elapsed Time: 41.534
+
+(R)b: 8192 N: 9000000 Elapsed Time: 25.268
+(W)b: 8192 N: 9000000 Elapsed Time: 50.198
+
+(R)b: 8192 N: 10000000 Elapsed Time: 30.306
+(W)b: 8192 N: 10000000 Elapsed Time: 55.264
+
+(R)b: 16384 N: 10000 Elapsed Time: 0.045
+(W)b: 16384 N: 10000 Elapsed Time: 0.049
+
+(R)b: 16384 N: 100000 Elapsed Time: 0.246
+(W)b: 16384 N: 100000 Elapsed Time: 0.412
+
+(R)b: 16384 N: 1000000 Elapsed Time: 2.578
+(W)b: 16384 N: 1000000 Elapsed Time: 4.398
+
+(R)b: 16384 N: 2000000 Elapsed Time: 4.882
+(W)b: 16384 N: 2000000 Elapsed Time: 9.19
+
+(R)b: 16384 N: 3000000 Elapsed Time: 8.081
+(W)b: 16384 N: 3000000 Elapsed Time: 15.021
+
+(R)b: 16384 N: 4000000 Elapsed Time: 11.04
+(W)b: 16384 N: 4000000 Elapsed Time: 23.918
+
+(R)b: 16384 N: 5000000 Elapsed Time: 13.193
+(W)b: 16384 N: 5000000 Elapsed Time: 33.351
+
+(R)b: 16384 N: 6000000 Elapsed Time: 16.61
+(W)b: 16384 N: 6000000 Elapsed Time: 31.136
+
+(R)b: 16384 N: 7000000 Elapsed Time: 33.381
+(W)b: 16384 N: 7000000 Elapsed Time: 46.713
+
+(R)b: 16384 N: 8000000 Elapsed Time: 43.996
+(W)b: 16384 N: 8000000 Elapsed Time: 47.581
+
+(R)b: 16384 N: 9000000 Elapsed Time: 43.615
+(W)b: 16384 N: 9000000 Elapsed Time: 48.552
+
+(R)b: 16384 N: 10000000 Elapsed Time: 64.994
+(W)b: 16384 N: 10000000 Elapsed Time: 66.271
+
+(R)b: 32768 N: 10000 Elapsed Time: 0.031
+(W)b: 32768 N: 10000 Elapsed Time: 0.049
+
+(R)b: 32768 N: 100000 Elapsed Time: 0.205
+(W)b: 32768 N: 100000 Elapsed Time: 0.409
+
+(R)b: 32768 N: 1000000 Elapsed Time: 2.363
+(W)b: 32768 N: 1000000 Elapsed Time: 8.436
+
+(R)b: 32768 N: 2000000 Elapsed Time: 5.163
+(W)b: 32768 N: 2000000 Elapsed Time: 10.369
+
+(R)b: 32768 N: 3000000 Elapsed Time: 12.473
+(W)b: 32768 N: 3000000 Elapsed Time: 15.028
+
+(R)b: 32768 N: 4000000 Elapsed Time: 11.929
+(W)b: 32768 N: 4000000 Elapsed Time: 22.587
+
+(R)b: 32768 N: 5000000 Elapsed Time: 15.786
+(W)b: 32768 N: 5000000 Elapsed Time: 29
+
+(R)b: 32768 N: 6000000 Elapsed Time: 38.171
+(W)b: 32768 N: 6000000 Elapsed Time: 34.013
+
+(R)b: 32768 N: 7000000 Elapsed Time: 46.397
+(W)b: 32768 N: 7000000 Elapsed Time: 46.72
+
+(R)b: 32768 N: 8000000 Elapsed Time: 44.725
+(W)b: 32768 N: 8000000 Elapsed Time: 47.309
+
+(R)b: 32768 N: 9000000 Elapsed Time: 48.292
+(W)b: 32768 N: 9000000 Elapsed Time: 50.487
+
+(R)b: 32768 N: 10000000 Elapsed Time: 56.541
+(W)b: 32768 N: 10000000 Elapsed Time: 58.914
+
+(R)b: 65536 N: 10000 Elapsed Time: 0.033
+(W)b: 65536 N: 10000 Elapsed Time: 0.048
+
+(R)b: 65536 N: 100000 Elapsed Time: 0.211
+(W)b: 65536 N: 100000 Elapsed Time: 0.389
+
+(R)b: 65536 N: 1000000 Elapsed Time: 2.574
+(W)b: 65536 N: 1000000 Elapsed Time: 4.563
+
+(R)b: 65536 N: 2000000 Elapsed Time: 5.326
+(W)b: 65536 N: 2000000 Elapsed Time: 10.353
+
+(R)b: 65536 N: 3000000 Elapsed Time: 9.484
+(W)b: 65536 N: 3000000 Elapsed Time: 16.642
+
+(R)b: 65536 N: 4000000 Elapsed Time: 15.696
+(W)b: 65536 N: 4000000 Elapsed Time: 26.373
+
+(R)b: 65536 N: 5000000 Elapsed Time: 20.24
+(W)b: 65536 N: 5000000 Elapsed Time: 32.742
+
+(R)b: 65536 N: 6000000 Elapsed Time: 24.364
+(W)b: 65536 N: 6000000 Elapsed Time: 41.886
+
+(R)b: 65536 N: 7000000 Elapsed Time: 16.604
+(W)b: 65536 N: 7000000 Elapsed Time: 33.913
+
+(R)b: 65536 N: 8000000 Elapsed Time: 31.039
+(W)b: 65536 N: 8000000 Elapsed Time: 49.788
+
+(R)b: 65536 N: 9000000 Elapsed Time: 34.349
+(W)b: 65536 N: 9000000 Elapsed Time: 60.192
+
+(R)b: 65536 N: 10000000 Elapsed Time: 40.864
+(W)b: 65536 N: 10000000 Elapsed Time: 55.739
+
+(R)b: 131072 N: 10000 Elapsed Time: 0.03
+(W)b: 131072 N: 10000 Elapsed Time: 0.057
+
+(R)b: 131072 N: 100000 Elapsed Time: 0.23
+(W)b: 131072 N: 100000 Elapsed Time: 0.395
+
+(R)b: 131072 N: 1000000 Elapsed Time: 2.222
+(W)b: 131072 N: 1000000 Elapsed Time: 4.733
+
+(R)b: 131072 N: 2000000 Elapsed Time: 6.588
+(W)b: 131072 N: 2000000 Elapsed Time: 18.803
+
+(R)b: 131072 N: 3000000 Elapsed Time: 8.137
+(W)b: 131072 N: 3000000 Elapsed Time: 13.768
+
+(R)b: 131072 N: 4000000 Elapsed Time: 12.565
+(W)b: 131072 N: 4000000 Elapsed Time: 23.953
+
+(R)b: 131072 N: 5000000 Elapsed Time: 15.5
+(W)b: 131072 N: 5000000 Elapsed Time: 38.609
+
+(R)b: 131072 N: 6000000 Elapsed Time: 14.55
+(W)b: 131072 N: 6000000 Elapsed Time: 29.161
+
+(R)b: 131072 N: 7000000 Elapsed Time: 21.38
+(W)b: 131072 N: 7000000 Elapsed Time: 35.792
+
+(R)b: 131072 N: 8000000 Elapsed Time: 32.453
+(W)b: 131072 N: 8000000 Elapsed Time: 54.292
+
+(R)b: 131072 N: 9000000 Elapsed Time: 35.626
+(W)b: 131072 N: 9000000 Elapsed Time: 50.945
+
+(R)b: 131072 N: 10000000 Elapsed Time: 36.874
+(W)b: 131072 N: 10000000 Elapsed Time: 57.201
+
+(R)b: 262144 N: 10000 Elapsed Time: 0.03
+(W)b: 262144 N: 10000 Elapsed Time: 0.044
+
+(R)b: 262144 N: 100000 Elapsed Time: 0.197
+(W)b: 262144 N: 100000 Elapsed Time: 0.388
+
+(R)b: 262144 N: 1000000 Elapsed Time: 3.209
+(W)b: 262144 N: 1000000 Elapsed Time: 5.095
+
+(R)b: 262144 N: 2000000 Elapsed Time: 5.153
+(W)b: 262144 N: 2000000 Elapsed Time: 9.664
+
+(R)b: 262144 N: 3000000 Elapsed Time: 7.564
+(W)b: 262144 N: 3000000 Elapsed Time: 19.111
+
+(R)b: 262144 N: 4000000 Elapsed Time: 10.196
+(W)b: 262144 N: 4000000 Elapsed Time: 25.173
+
+(R)b: 262144 N: 5000000 Elapsed Time: 12.415
+(W)b: 262144 N: 5000000 Elapsed Time: 24.759
+
+(R)b: 262144 N: 6000000 Elapsed Time: 19.929
+(W)b: 262144 N: 6000000 Elapsed Time: 35.984
+
+(R)b: 262144 N: 7000000 Elapsed Time: 24.926
+(W)b: 262144 N: 7000000 Elapsed Time: 43.267
+
+(R)b: 262144 N: 8000000 Elapsed Time: 24.63
+(W)b: 262144 N: 8000000 Elapsed Time: 50.581
+
+(R)b: 262144 N: 9000000 Elapsed Time: 32.045
+(W)b: 262144 N: 9000000 Elapsed Time: 58.446
+
+(R)b: 262144 N: 10000000 Elapsed Time: 33.666
+(W)b: 262144 N: 10000000 Elapsed Time: 68.18
+
+
