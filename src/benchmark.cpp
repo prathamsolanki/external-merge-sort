@@ -191,7 +191,7 @@ class Benchmark {
             MemoryMappedFileIO obj;
 
             for (int b: B) {
-                if (b < 4096) continue;
+                //if (b < 4096) continue;
                 for (int n: N) {
                     file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
                     for (int i_n = 0; i_n < n; i_n++) {
@@ -227,6 +227,7 @@ class Benchmark {
             int file;
 
             for (int n: N) {
+                if (n < 7000000) continue;
                 file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR);
                 for (int i_n = 0; i_n < n; i_n++) {
                     int value = rand();
