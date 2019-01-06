@@ -23,7 +23,7 @@ class Benchmark {
         clock_t end;
         double elapsed_time;
         double elapsed_time_stl;
-        int N[12] = {10000, 100000, 1000000, 2000000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 10000000};
+        int N[14] = {10000, 100000, 1000000, 2000000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000, 10000000, 100000000, 1000000000};
         int B[9] = {1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144};
         int D[8] = {3, 4, 5, 6, 7, 8, 9, 10};
 
@@ -80,6 +80,61 @@ class Benchmark {
 
                 remove(output_file);
             }
+
+            file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR);
+            for (int i_n = 0; i_n < N[2]; i_n++) {
+                int value = rand();
+                write(file, &value, sizeof(int));
+            }
+            close(file);
+
+            for (int K = 1; K <= 30; K++) {
+                int files[K];
+                for (int k = 0; k < K; k++ ) {
+                    files[k] = obj.open_file(input_file);
+                }
+
+                begin = clock();
+                int n_count = 1;
+                while (n_count != N[2]) {
+                    for (int k = 0; k < K; k++) {
+                        tie(integer, end_of_stream) = obj.read_next(files[k]);
+                    }
+                    n_count++;
+                }
+                end = clock();
+
+                elapsed_time = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << "(R) K: "  << K << " Elapsed Time: " << elapsed_time << endl;
+
+                for (int k = 0; k < K; k++ ) {
+                    obj.close_file(files[k]);
+                }
+            }
+
+            for (int K = 1; K <= 30; K++) {
+                int files[K];
+                for (int k = 0; k < K; k++ ) {
+                    files[k] = obj.create_file(input_file);
+                }
+
+                begin = clock();
+                int n_count = 1;
+                while (n_count != N[2]) {
+                    for (int k = 0; k < K; k++) {
+                        obj.write_file(files[k], rand());
+                    }
+                    n_count++;
+                }
+                end = clock();
+
+                elapsed_time = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << "(W) K: "  << K << " Elapsed Time: " << elapsed_time << endl;
+
+                for (int k = 0; k < K; k++ ) {
+                    obj.close_file(files[k]);
+                }
+            }
         }
 
         void benchmark_buffered_stream(void) {
@@ -121,7 +176,54 @@ class Benchmark {
                 cout << "(W)"  << "N: " << n << " Elapsed Time: " << elapsed_time << endl;
 
                 obj.close_file(pFile);
-                remove(output_file);
+                remove(output_file);      
+            }
+
+            file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR);
+            for (int i_n = 0; i_n < N[5]; i_n++) {
+                int value = rand();
+                write(file, &value, sizeof(int));
+            }
+            close(file);
+
+            for (int K = 1; K <= 20; K++) {
+                FILE *pFiles[K];
+                for (int k = 0; k < K; k++ ) {
+                    pFiles[k] = obj.open_file(input_file);
+                }
+
+                begin = clock();
+                for (int k = 0; k < K; k++) {
+                    obj.read_file(pFiles[k]);
+                }
+                end = clock();
+
+                elapsed_time = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << "(R) K: "  << K << " Elapsed Time: " << elapsed_time << endl;
+
+                for (int k = 0; k < K; k++ ) {
+                    obj.close_file(pFiles[k]);
+                }
+            }
+
+            for (int K = 1; K <= 20; K++) {
+                FILE *pFiles[K];
+                for (int k = 0; k < K; k++ ) {
+                    pFiles[k] = obj.create_file(output_file);
+                }
+
+                begin = clock();
+                for (int k = 0; k < K; k++) {
+                    obj.write_file(pFiles[k], N[5]);
+                }
+                end = clock();
+
+                elapsed_time = double(end - begin) / (CLOCKS_PER_SEC / 1000);
+                cout << "(W) K: "  << K << " Elapsed Time: " << elapsed_time << endl;
+
+                for (int k = 0; k < K; k++ ) {
+                    obj.close_file(pFiles[k]);
+                }
             }
         }
 
@@ -191,7 +293,6 @@ class Benchmark {
             MemoryMappedFileIO obj;
 
             for (int b: B) {
-                //if (b < 4096) continue;
                 for (int n: N) {
                     file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
                     for (int i_n = 0; i_n < n; i_n++) {
@@ -227,7 +328,6 @@ class Benchmark {
             int file;
 
             for (int n: N) {
-                if (n < 7000000) continue;
                 file = open(input_file, O_RDWR | O_CREAT | O_APPEND, S_IRUSR);
                 for (int i_n = 0; i_n < n; i_n++) {
                     int value = rand();
