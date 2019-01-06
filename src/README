@@ -1,3 +1,11 @@
-g++ main.cpp -o main -lstdc++fs -std=c++11
+Compile using ==> g++ main.cpp -o main -lstdc++fs -std=c++11
 
-./main 
+Benchmark Data Stream ==> ./main 1
+Benchmark Buffered Stream => ./main 2
+Benchmark Buffered Stream with fixed buffer size ==> ./main 3
+Benchmark Memory Mapping ==> ./main 4
+Benchmark External Merge Sort ==> ./main 5
+
+Data files will be generated in the data/ directory and benchmark results in results/ directory.
+
+All source code is located inside src/ and report (report.pdf) is present inside report/.
